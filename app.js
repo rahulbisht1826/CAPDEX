@@ -9,11 +9,12 @@ const DEFAULT_SPECIMENS = [
         category: "Insect",
         rarity: "Epic",
         rating: 8.4,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCw_QPj8xAM5pAUosxYmgZKwrRDOpx0zZrJ0ITwlDpXr-55JgAHc-oe1xBlUqcHnP-LqbWlRjg_VfNvSU-ycxiojfaT_QTeqTo_Y_tW_QhndvNtfYZrGBWLZMC5UtmD4YTQinHAlw4aXuRmiP7M3MzZ2nBGYiAG63BgZkcWRo8lKELLJxvBlvxqIluRKGSldx_bQPI6Qi7feJwSG7hJyRTf2btrwaPfJbwmnDHmTfH7nHATQot1LxdUnquA-2FukBdyyAZO_ejHwkU",
+        image: "https://images.unsplash.com/photo-1590005354167-6da97870c913?auto=format&fit=crop&w=600&q=80",
         habitat: "Tropical rainforest canopy and understory",
         diet: "Fermenting fruit juices, tree sap, decomposing matter",
         whereToFind: "Lowland forests of Central and South America. Look around muddy riverbanks during warm, sunny mornings.",
-        mapCoords: { x: 350, y: 390 },
+        latitude: 41.22,
+        longitude: -124.01,
         scannedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString() // 2 hours ago
     },
     {
@@ -23,11 +24,12 @@ const DEFAULT_SPECIMENS = [
         category: "Flower",
         rarity: "Epic",
         rating: 9.8,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAlMP4YOPQ8twUbiMtPjrXjiTKvLJlFmRjmdPFZLa3V8aVcS-7Bne2UAC6tJl00_2eI7QQ8_3hb38tnyOPGLmyfdhgC4ubjF-vAkhF061ht1w_UgozIQcYsDAMEV4CVDuj45hT0naprInvQQRy_VHSB06qjBNmrNt9gZw2XoCz1NEZ2T9gdTJetszNfXkf1kcH4nMvBRYwv37zXKWdB0k5MdlrBWuGkyLh4WAS85ZefmwNAFtzLqkHDxZfymzWLyVdMtJ9SGQxcWiE",
+        image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80",
         habitat: "Deep misty valleys and high cloud forests",
         diet: "Nutrients from air currents, condensation, and decaying tree bark",
         whereToFind: "High-altitude cloud forests. Grows epiphytically on mossy branches of ancient trees.",
-        mapCoords: { x: 580, y: 220 },
+        latitude: -18.29,
+        longitude: 147.70,
         scannedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() // 1 day ago
     },
     {
@@ -37,11 +39,12 @@ const DEFAULT_SPECIMENS = [
         category: "Plant",
         rarity: "Common",
         rating: 4.2,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBD_tHX6rRue5PkkVAjj6S1dA91cupCC6BRhw9nFtvftOAAN_SOJMQi-JPR2oqEkzk1G3aeWT0qoTahncHQr9CQ_owQTppr-mXtKsCLKcWCdk5KvdipMjvMYF-ptu6GSTVxUmEtXy6c8shPsB8730sTtOwxv1yfXhweU4OHUHKB3S8wni5_WkJzxrrk67VbsXz0jGYVwqa45kKqrRDkoUW3G9LRA5IkIoB_uYoStCB74z16QKiJi8sP3wwvk-5r1bSfJxOdARgyns0",
+        image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=600&q=80",
         habitat: "Sunny rocky hillsides and arid scrublands",
         diet: "Mineral-rich dry soils, minimal rain water, and intense sunlight",
         whereToFind: "Dry, south-facing rock formations or gravelly hills. Common in residential botanical gardens.",
-        mapCoords: { x: 210, y: 550 },
+        latitude: 25.05,
+        longitude: 13.02,
         scannedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() // 3 days ago
     },
     {
@@ -51,11 +54,12 @@ const DEFAULT_SPECIMENS = [
         category: "Bird",
         rarity: "Rare",
         rating: 8.4,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCUe8L_8grzF-g3dDpk05rFziGpYcZxrYQRW4KHL81s2-XdNuxR_fMelso1CWGDuolIrJTP_S_BpGlHo2dGK5U93Rrsjf3HSjer1Rv3phtTuPhbSAtNlJZj4RgxgI-jLgap7dzkVlRvsF1Jl5lEEjuSRwhGVPD6URxll2K_k2MDWXMWtg6bskLgoapVdOBW97fdwPrLgzUDDC1eHYuk2FN8CR9ogvxB36zIa18vODklJ6UnSEhbpawwMzT3PyLy2Yzk79XCVFEj3BU",
+        image: "https://images.unsplash.com/photo-1480044965905-02098d419e96?auto=format&fit=crop&w=600&q=80",
         habitat: "Deciduous, coniferous, and mixed woodlands, suburban parks",
         diet: "Acorns, seeds, wild fruits, beetles, grasshoppers, caterpillars",
         whereToFind: "Woodland edges and oak trees. Can be easily spotted near backyard bird feeders, especially during winter.",
-        mapCoords: { x: 740, y: 410 },
+        latitude: 46.58,
+        longitude: 7.66,
         scannedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString() // 4 days ago
     },
     {
@@ -65,11 +69,12 @@ const DEFAULT_SPECIMENS = [
         category: "Insect",
         rarity: "Epic",
         rating: 9.5,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1IcPfb6ENu_z6cpWGjrkioNMmjhwRy0BTRkaihVAENJOw3yGIdBGSgg7rMDH3aomelH8VCrjDyS7M1PpLgXKBx8NixygdPVk-pZuUZ-YwDdqT3a6wP5IdBVEWL_GU998cBhmlZHMp3NCY75TsGTziNrrAx3crRQganVJRYJpwZpCrFnGYUjN1lLtbp_2ozmklv6uTnjk6PnjW6RHkvCRkpcHDikmeYkpYb6K7wNTfRfGlWhhCJviqlGrlAtDUAOuv_JNcemUlUFk",
+        image: "https://images.unsplash.com/photo-1615985160867-0c1b7596ff1a?auto=format&fit=crop&w=600&q=80",
         habitat: "Ancient broadleaf forests and rotten oak logs",
         diet: "Fermenting tree sap flow, ripe sweet fruits, and nectar",
         whereToFind: "Near old, sap-bleeding oak or beech trees. Best found during warm summer evenings on tree trunks.",
-        mapCoords: { x: 310, y: 190 },
+        latitude: 41.20,
+        longitude: -124.03,
         scannedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString() // 5 days ago
     },
     {
@@ -79,11 +84,12 @@ const DEFAULT_SPECIMENS = [
         category: "Animal",
         rarity: "Epic",
         rating: 9.9,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBaLHsG7-t-NND0g21scxRuyZdegmwREl-2W7iV9wgAE35p2nWy_DlHb6Lecl5hPQ-8Xr4Cl7I5KbF8QBAugcB_0vfb_okQiYmRopQyJGG4COIJo3PKLH-4Y07KesUpWmgRxl1P9xU_8ae8wdOz7zFexx4VqYCLOEmTaKGRXUzJP3Xaso6K3Ooe-2jc3mDYUouagwX0h2B9dtJGeOJLswEYxABg-i74-cwvpB1dMYRr-qteTEU6Sp5F-nGNb-qKZw2N4zB8ndleryw",
+        image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80",
         habitat: "High-altitude temperate coniferous and bamboo forests",
         diet: "Bamboo shoots and leaves, acorns, mushrooms, berries",
         whereToFind: "Steep slopes in mountain forests with dense bamboo understory. Often rests high in tree branches during the day.",
-        mapCoords: { x: 810, y: 150 },
+        latitude: 46.56,
+        longitude: 7.64,
         scannedAt: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString() // 8 days ago
     },
     {
@@ -93,11 +99,12 @@ const DEFAULT_SPECIMENS = [
         category: "Plant",
         rarity: "Common",
         rating: 5.5,
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD39dhx3-OvuzvQnAomxWoC7J2R6-5Qx7pNiJpq0BztcaoNE1BzDII440ovxiadj3f71NiW5Auq9d1Mw_Bo7LlRb4mq10rZnEuRW6dm_hzfP_hGc13ZJVNjr66E_Csu1TdZbQu7v0qGHQbQaBklBfswP-8iMI6wamSiDbgEp5tF_aU4koyYWcWeAJ2Dv7gRekqJPtrDF1vHZDeDXnju2uGY39PKS635yVK4X_UDpsUkTwjFK1OyXrf5TDa5LEhyWkx5Ity308HdS5c",
+        image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80",
         habitat: "Damp river valleys, swamps, and rich forest understories",
         diet: "Shade moisture, fertile damp leaf mold soils",
         whereToFind: "Look in dense forest glades, particularly near stream banks or wetlands under deep forest cover.",
-        mapCoords: { x: 440, y: 260 },
+        latitude: 41.24,
+        longitude: -124.05,
         scannedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString()
     }
 ];
@@ -353,28 +360,23 @@ function updateNavUI() {
     // Mobile Nav
     document.querySelectorAll("nav.mobile-nav a").forEach(link => {
         const tab = link.getAttribute("data-tab");
-        const isCamera = link.id === "mobile-nav-camera-wrapper";
         
         if (tab === state.activeTab || (state.activeTab === "detail" && tab === "collection")) {
-            if (!isCamera) {
-                link.className = "flex flex-col items-center justify-center text-primary font-bold transition-transform scale-105";
-                const badge = link.querySelector(".nav-badge");
-                if (badge) {
-                    badge.className = "nav-badge bg-secondary-container text-on-secondary-container rounded-full w-12 h-12 flex items-center justify-center shadow-inner scale-90";
-                }
-                const icon = link.querySelector("span.material-symbols-outlined");
-                if (icon) icon.classList.add("material-symbols-fill");
+            link.className = "flex flex-col items-center justify-center text-primary font-bold transition-transform scale-105";
+            const badge = link.querySelector(".nav-badge");
+            if (badge) {
+                badge.className = "nav-badge bg-secondary-container text-on-secondary-container rounded-full w-12 h-12 flex items-center justify-center shadow-inner scale-90";
             }
+            const icon = link.querySelector("span.material-symbols-outlined");
+            if (icon) icon.classList.add("material-symbols-fill");
         } else {
-            if (!isCamera) {
-                link.className = "flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform";
-                const badge = link.querySelector(".nav-badge");
-                if (badge) {
-                    badge.className = "nav-badge rounded-full w-12 h-12 flex items-center justify-center";
-                }
-                const icon = link.querySelector("span.material-symbols-outlined");
-                if (icon) icon.classList.remove("material-symbols-fill");
+            link.className = "flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform";
+            const badge = link.querySelector(".nav-badge");
+            if (badge) {
+                badge.className = "nav-badge rounded-full w-12 h-12 flex items-center justify-center";
             }
+            const icon = link.querySelector("span.material-symbols-outlined");
+            if (icon) icon.classList.remove("material-symbols-fill");
         }
     });
 }
@@ -649,14 +651,17 @@ function renderScan() {
 }
 
 // Camera control helper
+// Camera control helper
 async function startCamera() {
     const video = document.getElementById("scanner-video");
-    const container = document.getElementById("camera-view-container");
     const placeholder = document.getElementById("camera-placeholder");
 
     state.cameraActive = true;
 
     try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            throw new Error("getUserMedia is not supported or security context is missing");
+        }
         const stream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode: "environment" },
             audio: false
@@ -668,11 +673,13 @@ async function startCamera() {
         video.classList.remove("hidden");
         placeholder.classList.add("hidden");
         document.getElementById("btn-toggle-camera").textContent = "Stop Camera";
+        showNotification("Webcam stream started successfully!");
     } catch (err) {
         console.warn("Camera access denied or not supported. Using simulation fallback.", err);
         video.classList.add("hidden");
         placeholder.classList.remove("hidden");
         document.getElementById("btn-toggle-camera").textContent = "Start Camera";
+        showNotification("Camera offline. Simulated capture mode active.");
     }
 }
 
@@ -709,8 +716,20 @@ function bindScanActions() {
         if (state.cameraActive && state.cameraStream) {
             captureFromCamera();
         } else {
-            // Fallback simulation picker
-            showNotification("Select a preset or upload an image to simulate scanning!");
+            // Fallback simulation: select a random beautiful nature asset and proceed with scan workflow
+            showNotification("Camera offline. Simulating capture frame...");
+            const simulatedPhotos = [
+                "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80", // Deer
+                "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80", // Red Panda
+                "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80", // Woodlands
+                "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80", // Oak
+                "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80", // Orchid
+                "https://images.unsplash.com/photo-1590005354167-6da97870c913?auto=format&fit=crop&w=600&q=80"  // Blue Morpho
+            ];
+            const randomPhoto = simulatedPhotos[Math.floor(Math.random() * simulatedPhotos.length)];
+            setTimeout(() => {
+                showCustomClassifyModal(randomPhoto);
+            }, 600);
         }
     });
 }
@@ -731,19 +750,58 @@ function captureFromCamera() {
     showCustomClassifyModal(dataUrl);
 }
 
+// Convert EXIF degrees/minutes/seconds to decimal degrees
+function convertEXIFToDecimal(gpsMinSec, ref) {
+    if (!gpsMinSec || gpsMinSec.length < 3) return null;
+    
+    const getVal = (v) => {
+        if (typeof v === "object" && v.numerator !== undefined && v.denominator !== undefined) {
+            return v.numerator / v.denominator;
+        }
+        return parseFloat(v);
+    };
+
+    const deg = getVal(gpsMinSec[0]);
+    const min = getVal(gpsMinSec[1]);
+    const sec = getVal(gpsMinSec[2]);
+
+    let decimal = deg + (min / 60.0) + (sec / 3600.0);
+    if (ref === "S" || ref === "W") {
+        decimal = -decimal;
+    }
+    return decimal;
+}
+
 function handleCustomImageUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (event) => {
-        showCustomClassifyModal(event.target.result);
-    };
-    reader.readAsDataURL(file);
+    // Use EXIF-js to extract metadata
+    EXIF.getData(file, function() {
+        const latRef = EXIF.getTag(this, "GPSLatitudeRef");
+        const latVal = EXIF.getTag(this, "GPSLatitude");
+        const lngRef = EXIF.getTag(this, "GPSLongitudeRef");
+        const lngVal = EXIF.getTag(this, "GPSLongitude");
+
+        let latitude = null;
+        let longitude = null;
+
+        if (latVal && lngVal) {
+            latitude = convertEXIFToDecimal(latVal, latRef);
+            longitude = convertEXIFToDecimal(lngVal, lngRef);
+            console.log("Extracted GPS from EXIF:", latitude, longitude);
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            showCustomClassifyModal(event.target.result, latitude, longitude);
+        };
+        reader.readAsDataURL(file);
+    });
 }
 
 // Shows modal allowing user to specify the details of the custom object they scanned
-function showCustomClassifyModal(imgSrc) {
+function showCustomClassifyModal(imgSrc, latitude = null, longitude = null) {
     const modal = document.getElementById("classify-modal");
     document.getElementById("classify-preview-img").src = imgSrc;
     
@@ -785,17 +843,19 @@ function showCustomClassifyModal(imgSrc) {
         triggerScanAnalysisSequence({
             name: name,
             category: category,
-            image: imgSrc
+            image: imgSrc,
+            latitude: latitude,
+            longitude: longitude
         });
     });
 }
 
-function triggerScanSimulation(preset) {
-    triggerScanAnalysisSequence(preset);
+async function triggerScanSimulation(preset) {
+    await triggerScanAnalysisSequence(preset);
 }
 
 // Scanning UI sequence
-function triggerScanAnalysisSequence(specimenData) {
+async function triggerScanAnalysisSequence(specimenData) {
     const scanContainer = document.getElementById("scanner-view-box");
     const analysisOverlay = document.getElementById("scanner-analysis-overlay");
     const logConsole = document.getElementById("analysis-log-console");
@@ -814,12 +874,25 @@ function triggerScanAnalysisSequence(specimenData) {
         "Isolating specimen color spectrum...",
         "Matching texture profiles with bio-database...",
         "Connecting to CAPDEX cloud registry...",
-        "Retrieving taxonomic classifications...",
+        "Retrieving taxonomic classifications from Wikipedia...",
         "Generating field-guide metadata...",
         "Registering specimen signature..."
     ];
 
     let currentLogIdx = 0;
+    
+    // Background Wikipedia fetching
+    let wikiData = null;
+    try {
+        const query = specimenData.name;
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`);
+        if (res.ok) {
+            wikiData = await res.json();
+            console.log("Wikipedia metadata retrieved:", wikiData);
+        }
+    } catch (err) {
+        console.warn("Wikipedia API offline or blocked.", err);
+    }
     
     // Animate scanning process
     const interval = setInterval(() => {
@@ -846,22 +919,81 @@ function triggerScanAnalysisSequence(specimenData) {
                 "Flower": "Flos silvestris"
             };
 
-            const scientific = specimenData.scientificName || 
-                             (scientificNamesFallback[specimenData.category] || "Specimen naturalis");
+            // Attempt to extract scientific name from Wikipedia extract
+            let scientific = specimenData.scientificName || "";
+            if (!scientific && wikiData) {
+                const matches = wikiData.extract ? wikiData.extract.match(/\((([A-Z][a-z]+) ([a-z]+))\)/) : null;
+                if (matches) {
+                    scientific = matches[1];
+                } else if (wikiData.description && wikiData.description.toLowerCase().includes("species")) {
+                    scientific = wikiData.title;
+                }
+            }
+            if (!scientific) {
+                scientific = scientificNamesFallback[specimenData.category] || "Specimen naturalis";
+            }
 
             const rarityOptions = ["Common", "Rare", "Epic"];
-            // Epic is 20%, Rare is 35%, Common is 45%
             const rand = Math.random();
             const rarity = specimenData.rarity || 
                           (rand < 0.2 ? "Epic" : (rand < 0.55 ? "Rare" : "Common"));
 
             const rating = specimenData.rating || parseFloat((4 + Math.random() * 6).toFixed(1)); // 4.0 to 10.0
 
-            const description = specimenData.habitat ? specimenData : {
-                habitat: "Moist woodlands, valleys, and forest edges",
-                diet: "Organic solar energy, trace minerals, and natural rainfall",
-                whereToFind: "Damp soils shaded by heavy canopy. Look along valley stream paths in early morning."
-            };
+            // Base details
+            let habitat = specimenData.habitat || "";
+            let diet = specimenData.diet || "";
+            let whereToFind = specimenData.whereToFind || "";
+
+            if (wikiData) {
+                if (!habitat) {
+                    habitat = wikiData.description || "Natural biosphere, wooded environments, and plains.";
+                }
+                if (!diet) {
+                    diet = wikiData.extract ? wikiData.extract.split(".")[0] + "." : "Organic energy, mineral-rich soils.";
+                }
+                if (!whereToFind) {
+                    whereToFind = "Look in native areas corresponding to " + (wikiData.description || "its natural domain") + ". Check regional reserve parks.";
+                }
+            } else {
+                habitat = habitat || "Moist woodlands, valleys, and forest edges";
+                diet = diet || "Organic solar energy, trace minerals, and natural rainfall";
+                whereToFind = whereToFind || "Damp soils shaded by heavy canopy. Look along valley stream paths in early morning.";
+            }
+
+            // Assign coordinates based on user EXIF metadata, or fall back to biome categories
+            let lat = specimenData.latitude;
+            let lng = specimenData.longitude;
+
+            if (lat === undefined || lat === null || lng === undefined || lng === null) {
+                const offsetLat = (Math.random() - 0.5) * 0.08;
+                const offsetLng = (Math.random() - 0.5) * 0.08;
+
+                if (specimenData.category === "Plant" || specimenData.category === "Tree" || specimenData.category === "Flower") {
+                    lat = 41.21 + offsetLat;
+                    lng = -124.00 + offsetLng; // Woodlands
+                } else if (specimenData.category === "Bird") {
+                    lat = 46.58 + offsetLat;
+                    lng = 7.65 + offsetLng; // Peaks
+                } else if (specimenData.category === "Insect") {
+                    lat = 41.21 + offsetLat;
+                    lng = -124.00 + offsetLng; // Woodlands / Insects
+                } else if (specimenData.category === "Animal") {
+                    if (Math.random() > 0.5) {
+                        lat = 46.58 + offsetLat;
+                        lng = 7.65 + offsetLng; // Peaks
+                    } else {
+                        lat = 25.00 + offsetLat;
+                        lng = 13.00 + offsetLng; // Dunes
+                    }
+                } else if (specimenData.category === "Fruit") {
+                    lat = 25.00 + offsetLat;
+                    lng = 13.00 + offsetLng; // Dunes
+                } else {
+                    lat = -18.29 + offsetLat;
+                    lng = 147.70 + offsetLng; // Shallows / Other
+                }
+            }
 
             const newSpecimen = {
                 id: "scanned-" + Date.now(),
@@ -870,14 +1002,12 @@ function triggerScanAnalysisSequence(specimenData) {
                 category: specimenData.category,
                 rarity: rarity,
                 rating: rating,
-                image: specimenData.image || "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80",
-                habitat: description.habitat,
-                diet: description.diet,
-                whereToFind: description.whereToFind,
-                mapCoords: { 
-                    x: Math.floor(150 + Math.random() * 700), // Random coordinate on our map canvas (width 1000)
-                    y: Math.floor(100 + Math.random() * 500)  // height 700
-                },
+                image: specimenData.image || (wikiData && wikiData.thumbnail ? wikiData.thumbnail.source : "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80"),
+                habitat: habitat,
+                diet: diet,
+                whereToFind: whereToFind,
+                latitude: lat,
+                longitude: lng,
                 scannedAt: new Date().toISOString()
             };
 
@@ -889,64 +1019,152 @@ function triggerScanAnalysisSequence(specimenData) {
             showNotification(`New ${newSpecimen.rarity} specimen discovered: ${newSpecimen.name}!`);
             navigateTo("detail", newSpecimen.id);
         }
-    }, 450);
+    }, 200);
 }
 
 // ==========================================
 // 4. MAP TAB RENDER
 // ==========================================
+const hotspots = [
+    { id: "woodlands", name: "Whispering Woodlands", category: "Insect", lat: 41.21, lng: -124.00, radius: 150000, color: "#0f5238", fillColor: "#74c69d" },
+    { id: "peaks", name: "Alpine Peaks", category: "Animal", lat: 46.58, lng: 7.65, radius: 150000, color: "#334155", fillColor: "#94a3b8" },
+    { id: "shallows", name: "Aurelian Shallows", category: "Flower", lat: -18.29, lng: 147.70, radius: 250000, color: "#0077b6", fillColor: "#90e0ef" },
+    { id: "dunes", name: "Scorched Dunes", category: "Plant", lat: 25.00, lng: 13.00, radius: 250000, color: "#b25a38", fillColor: "#fbd38d" }
+];
+
+function initializeLeafletMap() {
+    if (window.capdexMap) return;
+
+    window.capdexMap = L.map('real-leaflet-map', {
+        zoomControl: false,
+        attributionControl: false
+    }).setView([30, 0], 2);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 18
+    }).addTo(window.capdexMap);
+
+    window.mapMarkers = [];
+    window.mapCircles = [];
+
+    // Add zoom controls
+    document.getElementById("btn-map-zoom-in").addEventListener("click", () => {
+        window.capdexMap.zoomIn();
+    });
+    document.getElementById("btn-map-zoom-out").addEventListener("click", () => {
+        window.capdexMap.zoomOut();
+    });
+    document.getElementById("btn-map-recenter").addEventListener("click", () => {
+        window.capdexMap.setView([41.21, -124.00], 8, { animate: true });
+        showNotification("Recentered map on current location.");
+    });
+
+    // Close specimen popup on map click
+    window.capdexMap.on('click', () => {
+        document.getElementById("map-specimen-popup").classList.add("hidden");
+        state.mapState.selectedMarkerSpecimen = null;
+        highlightBiomeShape(null);
+    });
+
+    // Bind Search Input listener
+    const searchInput = document.getElementById("map-search-input");
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            if (!state.mapState.filters) state.mapState.filters = { search: "", category: "All" };
+            state.mapState.filters.search = e.target.value;
+            renderMap();
+        });
+    }
+
+    // Bind Category Button listeners
+    document.querySelectorAll(".map-filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const cat = btn.getAttribute("data-category");
+            if (!state.mapState.filters) state.mapState.filters = { search: "", category: "All" };
+            state.mapState.filters.category = cat;
+
+            // Toggle active styles
+            document.querySelectorAll(".map-filter-btn").forEach(b => {
+                b.className = "map-filter-btn px-3 py-2 rounded-full text-[11px] font-bold bg-white text-primary border border-slate-100 hover:bg-slate-50 transition-all shadow-sm";
+            });
+            btn.className = "map-filter-btn px-4 py-2 rounded-full text-[11px] font-bold bg-secondary text-white shadow-sm transition-all";
+
+            renderMap();
+        });
+    });
+
+    // Bind Biome side panel list click listeners
+    document.querySelectorAll(".biome-list-item").forEach(item => {
+        item.addEventListener("click", () => {
+            const biomeId = item.getAttribute("data-biome");
+            const spot = hotspots.find(h => h.id === biomeId);
+            if (spot) {
+                panToCoordinate(spot.lat, spot.lng);
+                highlightBiomeShape(biomeId);
+                openHotspotPopup(spot);
+            }
+        });
+    });
+}
+
 function renderMap() {
-    const canvas = document.getElementById("map-svg-canvas");
-    const markerGroup = document.getElementById("map-markers-group");
-    const locationsGroup = document.getElementById("map-locations-group");
+    initializeLeafletMap();
 
-    if (!markerGroup || !locationsGroup) return;
+    // Invalidate size to load map correctly in visible tab viewport
+    setTimeout(() => {
+        if (window.capdexMap) {
+            window.capdexMap.invalidateSize();
+        }
+    }, 100);
 
-    // Clear old elements
-    markerGroup.innerHTML = "";
-    locationsGroup.innerHTML = "";
+    // Clear active specimen markers
+    if (window.mapMarkers) {
+        window.mapMarkers.forEach(m => window.capdexMap.removeLayer(m));
+    }
+    window.mapMarkers = [];
 
-    // Hotspot biomes configuration matching the map's SVG path centroids
-    const hotspots = [
-        { id: "woodlands", name: "Whispering Woodlands", category: "Insect", cx: 380, cy: 220, r: 90, fill: "rgba(116, 198, 157, 0.15)", stroke: "#0f5238" },
-        { id: "peaks", name: "Alpine Peaks", category: "Animal", cx: 820, cy: 160, r: 70, fill: "rgba(71, 85, 105, 0.15)", stroke: "#334155" },
-        { id: "shallows", name: "Aurelian Shallows", category: "Flower", cx: 640, cy: 340, r: 85, fill: "rgba(0, 119, 182, 0.15)", stroke: "#0077b6" },
-        { id: "dunes", name: "Scorched Dunes", category: "Plant", cx: 220, cy: 540, r: 80, fill: "rgba(178, 90, 56, 0.15)", stroke: "#b25a38" }
-    ];
+    // Clear active hotspot circles
+    if (window.mapCircles) {
+        window.mapCircles.forEach(c => window.capdexMap.removeLayer(c));
+    }
+    window.mapCircles = [];
 
-    // Render Hotspot rings/labels
+    // Draw user location pin
+    const userIcon = L.divIcon({
+        className: 'user-location-pin-container',
+        html: `
+            <div class="relative flex items-center justify-center w-8 h-8">
+                <div class="absolute inset-0 bg-emerald-600/25 rounded-full animate-ping"></div>
+                <div class="relative w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-md border border-emerald-600">
+                    <div class="w-2.5 h-2.5 bg-emerald-600 rounded-full"></div>
+                </div>
+            </div>
+        `,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+    });
+    const userMarker = L.marker([41.21, -124.00], { icon: userIcon }).addTo(window.capdexMap);
+    window.mapMarkers.push(userMarker);
+
+    // Draw Hotspot Biome Circles
     hotspots.forEach(spot => {
-        const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        ring.setAttribute("cx", spot.cx);
-        ring.setAttribute("cy", spot.cy);
-        ring.setAttribute("r", spot.r);
-        ring.setAttribute("fill", spot.fill);
-        ring.setAttribute("stroke", spot.stroke);
-        ring.setAttribute("stroke-width", "2");
-        ring.setAttribute("stroke-dasharray", "6 4");
-        ring.setAttribute("class", "cursor-pointer hover:opacity-80 transition-opacity");
-        ring.addEventListener("click", (e) => {
-            e.stopPropagation();
-            highlightBiomeShape(spot.id);
-            openHotspotPopup(spot);
-        });
-        locationsGroup.appendChild(ring);
+        const circle = L.circle([spot.lat, spot.lng], {
+            color: spot.color,
+            fillColor: spot.fillColor,
+            fillOpacity: 0.12,
+            radius: spot.radius,
+            dashArray: '6, 4',
+            weight: 2
+        }).addTo(window.capdexMap);
 
-        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        text.setAttribute("x", spot.cx);
-        text.setAttribute("y", spot.cy + spot.r - 10);
-        text.setAttribute("fill", spot.stroke);
-        text.setAttribute("font-size", "10");
-        text.setAttribute("font-weight", "bold");
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("class", "cursor-pointer select-none font-sans");
-        text.textContent = spot.name.toUpperCase();
-        text.addEventListener("click", (e) => {
-            e.stopPropagation();
+        circle.on('click', (e) => {
+            L.DomEvent.stopPropagation(e);
+            panToCoordinate(spot.lat, spot.lng);
             highlightBiomeShape(spot.id);
             openHotspotPopup(spot);
         });
-        locationsGroup.appendChild(text);
+
+        window.mapCircles.push(circle);
     });
 
     // Filtering active collection markers
@@ -962,54 +1180,37 @@ function renderMap() {
 
     // Render filtered markers on map
     filteredSpecimens.forEach(spec => {
-        const coords = spec.mapCoords || { x: 500, y: 350 };
-        
-        let markerColor = "#64748b"; // Common
-        if (spec.rarity === "Rare") markerColor = "#0ea5e9";
-        else if (spec.rarity === "Epic") markerColor = "#8b5cf6";
+        // Fallback if missing latitude/longitude
+        const lat = spec.latitude !== undefined ? spec.latitude : 41.21;
+        const lng = spec.longitude !== undefined ? spec.longitude : -124.00;
 
-        const markerHtml = `
-            <g class="map-marker cursor-pointer" data-marker-id="${spec.id}" transform="translate(${coords.x}, ${coords.y})">
-                <!-- Glowing Outer Ring -->
-                <circle cx="0" cy="-24" r="22" fill="#ffffff" stroke="${markerColor}" stroke-width="3" />
-                <!-- Clipped Specimen Image -->
-                <defs>
-                    <clipPath id="clip-${spec.id}">
-                        <circle cx="0" cy="-24" r="18" />
-                    </clipPath>
-                </defs>
-                <image href="${spec.image}" x="-18" y="-42" width="36" height="36" clip-path="url(#clip-${spec.id})" preserveAspectRatio="xMidYMid slice" />
-                
-                <!-- Bottom Pin Needle -->
-                <path d="M-6 -8 L0 0 L6 -8 Z" fill="${markerColor}" />
-                <circle cx="0" cy="0" r="2.5" fill="#ffffff" />
-            </g>
-        `;
+        const markerColor = spec.rarity === "Epic" ? "#8b5cf6" : (spec.rarity === "Rare" ? "#0ea5e9" : "#64748b");
+        const pinIcon = L.divIcon({
+            className: 'custom-map-pin-container',
+            html: `
+                <div class="relative flex flex-col items-center select-none">
+                    <!-- Glowing Outer Ring & Image container -->
+                    <div class="relative w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-lg border-2 animate-fade-in" style="border-color: ${markerColor};">
+                        <img class="w-9 h-9 rounded-full object-cover" src="${spec.image}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80';" />
+                    </div>
+                    <!-- Bottom Pin Needle -->
+                    <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] -mt-[1px]" style="border-t-color: ${markerColor};"></div>
+                    <!-- Small center dot -->
+                    <div class="w-1.5 h-1.5 rounded-full bg-white -mt-[6px]"></div>
+                </div>
+            `,
+            iconSize: [44, 52],
+            iconAnchor: [22, 52]
+        });
 
-        const wrapper = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        wrapper.innerHTML = markerHtml;
-        const gNode = wrapper.firstElementChild;
-
-        // Click marker event opens map popup
-        gNode.addEventListener("click", (e) => {
-            e.stopPropagation();
+        const marker = L.marker([lat, lng], { icon: pinIcon }).addTo(window.capdexMap);
+        marker.on('click', (e) => {
+            L.DomEvent.stopPropagation(e);
             openMapPopup(spec);
         });
 
-        markerGroup.appendChild(gNode);
+        window.mapMarkers.push(marker);
     });
-
-    // Draw user location simulator marker
-    const userPinHtml = `
-        <g id="user-location-marker" transform="translate(500, 320)">
-            <circle cx="0" cy="0" r="14" fill="rgba(14, 108, 74, 0.25)" class="animate-ping" />
-            <circle cx="0" cy="0" r="8" fill="#ffffff" class="shadow-md" />
-            <circle cx="0" cy="0" r="5" fill="#0e6c4a" />
-        </g>
-    `;
-    const userWrapper = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    userWrapper.innerHTML = userPinHtml;
-    markerGroup.appendChild(userWrapper.firstElementChild);
 
     // Populate Right Panel Discoveries list
     const listContainer = document.getElementById("map-discoveries-list");
@@ -1019,21 +1220,23 @@ function renderMap() {
             listContainer.innerHTML = `<div class="text-xs text-outline italic text-center py-4">No discovered specimens match these filters.</div>`;
         } else {
             filteredSpecimens.forEach(spec => {
-                const coords = spec.mapCoords || { x: 500, y: 350 };
+                const lat = spec.latitude !== undefined ? spec.latitude : 41.21;
+                const lng = spec.longitude !== undefined ? spec.longitude : -124.00;
+                
                 const item = document.createElement("div");
                 item.className = "flex items-center justify-between p-2 rounded-xl bg-surface-variant/30 hover:bg-surface-variant/60 cursor-pointer border border-transparent hover:border-primary/10 transition-all";
                 item.innerHTML = `
                     <div class="flex items-center gap-2.5 min-w-0">
-                        <img class="w-8 h-8 rounded-lg object-contain bg-surface-container shrink-0" src="${spec.image}" />
+                        <img class="w-8 h-8 rounded-lg object-cover bg-surface-container shrink-0 animate-fade-in" src="${spec.image}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80';" />
                         <div class="min-w-0">
                             <h4 class="font-bold text-xs text-on-surface truncate">${spec.name}</h4>
-                            <p class="text-[9px] text-outline">Coord: [${coords.x}, ${coords.y}] • ${spec.rarity}</p>
+                            <p class="text-[9px] text-outline">Coord: [${lat.toFixed(2)}, ${lng.toFixed(2)}] • ${spec.rarity}</p>
                         </div>
                     </div>
                     <span class="material-symbols-outlined text-outline text-[16px]">location_searching</span>
                 `;
                 item.addEventListener("click", () => {
-                    panToCoordinate(coords.x, coords.y);
+                    panToCoordinate(lat, lng);
                     openMapPopup(spec);
                 });
                 listContainer.appendChild(item);
@@ -1056,7 +1259,7 @@ function openMapPopup(specimen) {
                 <span class="material-symbols-outlined">close</span>
             </button>
             <div class="flex items-center gap-4">
-                <img class="w-20 h-20 object-contain rounded-2xl bg-surface-container shrink-0" src="${specimen.image}" alt="${specimen.name}" />
+                <img class="w-20 h-20 object-cover rounded-2xl bg-surface-container shrink-0 animate-fade-in" src="${specimen.image}" alt="${specimen.name}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80';" />
                 <div class="flex-1 min-w-0">
                     <span class="px-2.5 py-0.5 rounded-full text-white text-[9px] font-bold uppercase tracking-wider ${rarityClass}">${specimen.rarity}</span>
                     <h4 class="font-title-md text-[16px] text-primary truncate mt-1">${specimen.name}</h4>
@@ -1120,7 +1323,7 @@ function openHotspotPopup(spot) {
                     <span class="text-xs text-outline italic py-1">No specimens logged here yet.</span>
                 ` : foundSpecimens.map(s => `
                     <div class="flex items-center gap-1.5 bg-white/60 hover:bg-white px-2.5 py-1 rounded-xl border border-slate-100 cursor-pointer shrink-0 transition-colors" onclick="navigateTo('detail', '${s.id}')">
-                        <img class="w-5 h-5 object-contain" src="${s.image}" />
+                        <img class="w-5 h-5 object-cover rounded animate-fade-in" style="width: 20px; height: 20px;" src="${s.image}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=600&q=80';" />
                         <span class="text-[10px] font-medium text-on-surface truncate max-w-[80px]">${s.name}</span>
                     </div>
                 `).join("")}
@@ -1146,39 +1349,13 @@ function getCategoryIcon(category) {
     }
 }
 
-function panToCoordinate(x, y) {
-    const mapBox = document.getElementById("map-drag-container");
-    const svg = document.getElementById("map-svg-canvas");
-    if (!mapBox || !svg) return;
-
-    state.mapState.zoom = 1.3; // Zoom in slightly for focus
-    state.mapState.panX = (mapBox.clientWidth / 2) - (x * state.mapState.zoom);
-    state.mapState.panY = (mapBox.clientHeight / 2) - (y * state.mapState.zoom);
-
-    // Apply smooth transition animation temporarily
-    svg.style.transition = "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)";
-    svg.style.transform = `translate(${state.mapState.panX}px, ${state.mapState.panY}px) scale(${state.mapState.zoom})`;
-    
-    setTimeout(() => {
-        svg.style.transition = "transform 0.1s ease-out"; // Restore normal drag speed
-    }, 500);
+function panToCoordinate(lat, lng) {
+    if (window.capdexMap) {
+        window.capdexMap.setView([lat, lng], 8, { animate: true, duration: 1.0 });
+    }
 }
 
 function highlightBiomeShape(biomeId) {
-    document.querySelectorAll(".biome-shape").forEach(shape => {
-        if (shape.getAttribute("data-biome") === biomeId) {
-            shape.classList.add("active");
-            shape.style.filter = "drop-shadow(0 0 8px rgba(15, 82, 56, 0.4))";
-            shape.style.strokeWidth = "3px";
-            shape.style.stroke = "#0f5238";
-        } else {
-            shape.classList.remove("active");
-            shape.style.filter = "";
-            shape.style.strokeWidth = "";
-            shape.style.stroke = "";
-        }
-    });
-
     document.querySelectorAll(".biome-list-item").forEach(item => {
         if (item.getAttribute("data-biome") === biomeId) {
             item.classList.add("bg-primary-container/10", "border-primary/20", "scale-[1.02]");
@@ -1188,167 +1365,6 @@ function highlightBiomeShape(biomeId) {
             item.classList.add("bg-white/40");
         }
     });
-}
-
-function bindMapInteraction() {
-    const mapBox = document.getElementById("map-drag-container");
-    const svg = document.getElementById("map-svg-canvas");
-    if (!mapBox || !svg) return;
-
-    let isDragging = false;
-    let startX, startY;
-
-    // Draggable canvas mechanics
-    mapBox.addEventListener("mousedown", (e) => {
-        if (e.target.closest('.cursor-pointer') || e.target.closest('.glass-nav') || e.target.closest('button')) return;
-        isDragging = true;
-        startX = e.clientX - state.mapState.panX;
-        startY = e.clientY - state.mapState.panY;
-    });
-
-    window.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        state.mapState.panX = e.clientX - startX;
-        state.mapState.panY = e.clientY - startY;
-
-        // Apply bounds check (limit map dragging off canvas)
-        const mapWidth = 1000;
-        const mapHeight = 700;
-        const boxWidth = mapBox.clientWidth;
-        const boxHeight = mapBox.clientHeight;
-
-        state.mapState.panX = Math.max(Math.min(state.mapState.panX, 100), boxWidth - mapWidth - 100);
-        state.mapState.panY = Math.max(Math.min(state.mapState.panY, 100), boxHeight - mapHeight - 100);
-
-        svg.style.transform = `translate(${state.mapState.panX}px, ${state.mapState.panY}px) scale(${state.mapState.zoom})`;
-    });
-
-    window.addEventListener("mouseup", () => {
-        isDragging = false;
-    });
-
-    // Zoom Buttons
-    document.getElementById("btn-map-zoom-in").addEventListener("click", () => {
-        state.mapState.zoom = Math.min(state.mapState.zoom + 0.15, 2.0);
-        updateMapTransform();
-    });
-
-    document.getElementById("btn-map-zoom-out").addEventListener("click", () => {
-        state.mapState.zoom = Math.max(state.mapState.zoom - 0.15, 0.7);
-        updateMapTransform();
-    });
-
-    // Center user location button
-    document.getElementById("btn-map-recenter").addEventListener("click", () => {
-        const mapBox = document.getElementById("map-drag-container");
-        state.mapState.zoom = 1.0;
-        state.mapState.panX = (mapBox.clientWidth / 2) - 500;
-        state.mapState.panY = (mapBox.clientHeight / 2) - 320;
-        updateMapTransform();
-        showNotification("Recentered map on current location.");
-    });
-
-    // Map background click closes popup and clears highlights
-    svg.addEventListener("click", () => {
-        document.getElementById("map-specimen-popup").classList.add("hidden");
-        state.mapState.selectedMarkerSpecimen = null;
-        // Reset biome shape active states
-        document.querySelectorAll(".biome-shape").forEach(shape => {
-            shape.classList.remove("active");
-            shape.style.filter = "";
-            shape.style.strokeWidth = "";
-            shape.style.stroke = "";
-        });
-        document.querySelectorAll(".biome-list-item").forEach(item => {
-            item.classList.remove("bg-primary-container/10", "border-primary/20", "scale-[1.02]");
-            item.classList.add("bg-white/40");
-        });
-    });
-
-    // Interactive Map Search
-    const searchInput = document.getElementById("map-search-input");
-    if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-            if (!state.mapState.filters) state.mapState.filters = { search: "", category: "All" };
-            state.mapState.filters.search = e.target.value;
-            renderMap();
-        });
-    }
-
-    // Category Buttons
-    document.querySelectorAll(".map-filter-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            const cat = btn.getAttribute("data-category");
-            if (!state.mapState.filters) state.mapState.filters = { search: "", category: "All" };
-            state.mapState.filters.category = cat;
-            
-            // Toggle active classes
-            document.querySelectorAll(".map-filter-btn").forEach(b => {
-                b.className = "map-filter-btn px-3 py-2 rounded-full text-[11px] font-bold bg-white text-primary border border-slate-100 hover:bg-slate-50 transition-all shadow-sm";
-            });
-            btn.className = "map-filter-btn px-4 py-2 rounded-full text-[11px] font-bold bg-secondary text-white shadow-sm transition-all";
-            
-            renderMap();
-        });
-    });
-
-    // Biome Side list items clicking
-    document.querySelectorAll(".biome-list-item").forEach(item => {
-        item.addEventListener("click", () => {
-            const biomeId = item.getAttribute("data-biome");
-            const centers = {
-                woodlands: { id: "woodlands", name: "Whispering Woodlands", category: "Insect", cx: 380, cy: 220, r: 90, fill: "rgba(116, 198, 157, 0.15)", stroke: "#0f5238" },
-                peaks: { id: "peaks", name: "Alpine Peaks", category: "Animal", cx: 820, cy: 160, r: 70, fill: "rgba(71, 85, 105, 0.15)", stroke: "#334155" },
-                shallows: { id: "shallows", name: "Aurelian Shallows", category: "Flower", cx: 640, cy: 340, r: 85, fill: "rgba(0, 119, 182, 0.15)", stroke: "#0077b6" },
-                dunes: { id: "dunes", name: "Scorched Dunes", category: "Plant", cx: 220, cy: 540, r: 80, fill: "rgba(178, 90, 56, 0.15)", stroke: "#b25a38" }
-            };
-            const center = centers[biomeId];
-            if (center) {
-                panToCoordinate(center.cx, center.cy);
-                highlightBiomeShape(biomeId);
-                openHotspotPopup(center);
-            }
-        });
-    });
-
-    // Biome SVG shape paths clicking
-    document.querySelectorAll(".biome-shape").forEach(shape => {
-        shape.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const biomeId = shape.getAttribute("data-biome");
-            const centers = {
-                woodlands: { id: "woodlands", name: "Whispering Woodlands", category: "Insect", cx: 380, cy: 220, r: 90, fill: "rgba(116, 198, 157, 0.15)", stroke: "#0f5238" },
-                peaks: { id: "peaks", name: "Alpine Peaks", category: "Animal", cx: 820, cy: 160, r: 70, fill: "rgba(71, 85, 105, 0.15)", stroke: "#334155" },
-                shallows: { id: "shallows", name: "Aurelian Shallows", category: "Flower", cx: 640, cy: 340, r: 85, fill: "rgba(0, 119, 182, 0.15)", stroke: "#0077b6" },
-                dunes: { id: "dunes", name: "Scorched Dunes", category: "Plant", cx: 220, cy: 540, r: 80, fill: "rgba(178, 90, 56, 0.15)", stroke: "#b25a38" }
-            };
-            const center = centers[biomeId];
-            if (center) {
-                panToCoordinate(center.cx, center.cy);
-                highlightBiomeShape(biomeId);
-                openHotspotPopup(center);
-            }
-        });
-    });
-}
-
-function resetMapPosition() {
-    setTimeout(() => {
-        const mapBox = document.getElementById("map-drag-container");
-        if (mapBox) {
-            state.mapState.zoom = 1.0;
-            state.mapState.panX = (mapBox.clientWidth / 2) - 500;
-            state.mapState.panY = (mapBox.clientHeight / 2) - 320;
-            updateMapTransform();
-        }
-    }, 50);
-}
-
-function updateMapTransform() {
-    const svg = document.getElementById("map-svg-canvas");
-    if (svg) {
-        svg.style.transform = `translate(${state.mapState.panX}px, ${state.mapState.panY}px) scale(${state.mapState.zoom})`;
-    }
 }
 
 // ==========================================

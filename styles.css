@@ -300,3 +300,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
 }
+
+/* Custom Leaflet overrides */
+.custom-leaflet-marker {
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+}
+
