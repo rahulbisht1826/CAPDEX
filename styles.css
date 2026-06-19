@@ -308,3 +308,53 @@ body {
     overflow: visible !important;
 }
 
+/* Leaflet attribution bar – minimal, translucent */
+.leaflet-control-attribution {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-size: 9px !important;
+    padding: 2px 8px !important;
+    border-radius: 8px 0 0 0 !important;
+    color: #64748b !important;
+    border: none !important;
+}
+.leaflet-control-attribution a {
+    color: #0f5238 !important;
+    text-decoration: none !important;
+}
+
+/* Custom tooltip for user location pin */
+.leaflet-tooltip-custom {
+    background: rgba(15, 82, 56, 0.9) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.03em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+.leaflet-tooltip-custom::before {
+    border-top-color: rgba(15, 82, 56, 0.9) !important;
+}
+
+/* Pin container transparency */
+.user-location-pin-container,
+.custom-map-pin-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Leaflet scale control */
+.leaflet-control-scale-line {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(4px);
+    border-color: #bfc9c1 !important;
+    font-size: 9px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    border-radius: 4px !important;
+    color: #404943 !important;
+}

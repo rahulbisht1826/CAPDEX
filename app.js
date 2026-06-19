@@ -295,10 +295,13 @@ function bindNavigation() {
     });
 
     // Dashboard navigation helpers
-    document.getElementById("btn-see-all-collection").addEventListener("click", () => {
-        state.filters.category = "All";
-        navigateTo("collection");
-    });
+    const seeAllBtn = document.getElementById("btn-see-all-collection");
+    if (seeAllBtn) {
+        seeAllBtn.addEventListener("click", () => {
+            state.filters.category = "All";
+            navigateTo("collection");
+        });
+    }
     
     document.getElementById("btn-open-map-glimpse").addEventListener("click", () => {
         navigateTo("map");
@@ -1035,38 +1038,141 @@ const hotspots = [
 function initializeLeafletMap() {
     if (window.capdexMap) return;
 
+    // Create the map with refined defaults
     window.capdexMap = L.map('real-leaflet-map', {
         zoomControl: false,
-        attributionControl: false
-    }).setView([30, 0], 2);
+        attributionControl: true
+    }).setView([20, 0], 3);
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        maxZoom: 18
-    }).addTo(window.capdexMap);
+    // ── Tile Layer Definitions ──
+    // 1. Street: OpenStreetMap standard tile – the most detailed street map
+    const streetLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+
+    // 2. Satellite: Esri World Imagery – real aerial/satellite photography
+    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+    // Satellite labels overlay (road/city names on top of imagery)
+    const satelliteLabelsLayer = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        pane: 'overlayPane'
+    });
+
+    // 3. Topographic: OpenTopoMap – detailed topographic contours & terrain
+    const topoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
+        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a>'
+    });
+
+    // Set default active layer
+    streetLayer.addTo(window.capdexMap);
+    window.activeMapStyle = 'street';
+    window.mapTileLayers = { street: streetLayer, satellite: satelliteLayer, satelliteLabels: satelliteLabelsLayer, topo: topoLayer };
 
     window.mapMarkers = [];
     window.mapCircles = [];
 
-    // Add zoom controls
+    // ── Map Style Switcher ──
+    function switchMapStyle(style) {
+        if (window.activeMapStyle === style) return;
+
+        // Remove all tile layers
+        Object.values(window.mapTileLayers).forEach(layer => {
+            if (window.capdexMap.hasLayer(layer)) window.capdexMap.removeLayer(layer);
+        });
+
+        // Add the selected layer
+        switch (style) {
+            case 'street':
+                streetLayer.addTo(window.capdexMap);
+                break;
+            case 'satellite':
+                satelliteLayer.addTo(window.capdexMap);
+                satelliteLabelsLayer.addTo(window.capdexMap);
+                break;
+            case 'topo':
+                topoLayer.addTo(window.capdexMap);
+                break;
+        }
+
+        window.activeMapStyle = style;
+
+        // Update button UI
+        document.querySelectorAll(".map-style-btn").forEach(btn => {
+            if (btn.getAttribute("data-style") === style) {
+                btn.className = "map-style-btn px-3.5 py-2 rounded-xl text-[10px] font-bold bg-secondary text-white shadow-sm transition-all";
+            } else {
+                btn.className = "map-style-btn px-3.5 py-2 rounded-xl text-[10px] font-bold text-primary hover:bg-slate-100 transition-all";
+            }
+        });
+    }
+
+    document.querySelectorAll(".map-style-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            switchMapStyle(btn.getAttribute("data-style"));
+        });
+    });
+
+    // ── Live Coordinate Display on cursor movement ──
+    const coordsDisplay = document.getElementById("map-coords-display");
+    if (coordsDisplay) {
+        window.capdexMap.on('mousemove', (e) => {
+            coordsDisplay.textContent = `Lat: ${e.latlng.lat.toFixed(4)}  Lng: ${e.latlng.lng.toFixed(4)}`;
+        });
+        window.capdexMap.on('mouseout', () => {
+            coordsDisplay.textContent = `Lat: —  Lng: —`;
+        });
+    }
+
+    // ── Zoom Controls ──
     document.getElementById("btn-map-zoom-in").addEventListener("click", () => {
         window.capdexMap.zoomIn();
     });
     document.getElementById("btn-map-zoom-out").addEventListener("click", () => {
         window.capdexMap.zoomOut();
     });
+
+    // ── Recenter: Use browser geolocation if available ──
     document.getElementById("btn-map-recenter").addEventListener("click", () => {
-        window.capdexMap.setView([41.21, -124.00], 8, { animate: true });
-        showNotification("Recentered map on current location.");
+        if (navigator.geolocation) {
+            showNotification("Locating your position…");
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const lat = pos.coords.latitude;
+                    const lng = pos.coords.longitude;
+                    window.capdexMap.setView([lat, lng], 14, { animate: true, duration: 1.2 });
+                    // Update user location marker
+                    if (window.userLocationMarker) {
+                        window.userLocationMarker.setLatLng([lat, lng]);
+                    }
+                    showNotification(`Located: ${lat.toFixed(4)}, ${lng.toFixed(4)}`);
+                },
+                () => {
+                    // Fallback to default location
+                    window.capdexMap.setView([20, 0], 3, { animate: true });
+                    showNotification("Location access denied. Showing world view.");
+                },
+                { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
+            );
+        } else {
+            window.capdexMap.setView([20, 0], 3, { animate: true });
+            showNotification("Geolocation not supported by your browser.");
+        }
     });
 
-    // Close specimen popup on map click
+    // ── Close specimen popup on map click ──
     window.capdexMap.on('click', () => {
         document.getElementById("map-specimen-popup").classList.add("hidden");
         state.mapState.selectedMarkerSpecimen = null;
         highlightBiomeShape(null);
     });
 
-    // Bind Search Input listener
+    // ── Bind Search Input listener ──
     const searchInput = document.getElementById("map-search-input");
     if (searchInput) {
         searchInput.addEventListener("input", (e) => {
@@ -1076,7 +1182,7 @@ function initializeLeafletMap() {
         });
     }
 
-    // Bind Category Button listeners
+    // ── Bind Category Button listeners ──
     document.querySelectorAll(".map-filter-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const cat = btn.getAttribute("data-category");
@@ -1093,7 +1199,7 @@ function initializeLeafletMap() {
         });
     });
 
-    // Bind Biome side panel list click listeners
+    // ── Bind Biome side panel list click listeners ──
     document.querySelectorAll(".biome-list-item").forEach(item => {
         item.addEventListener("click", () => {
             const biomeId = item.getAttribute("data-biome");
@@ -1105,6 +1211,18 @@ function initializeLeafletMap() {
             }
         });
     });
+
+    // ── Try to get initial user location ──
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                state.userLat = pos.coords.latitude;
+                state.userLng = pos.coords.longitude;
+            },
+            () => { /* silent fail */ },
+            { enableHighAccuracy: false, timeout: 5000, maximumAge: 60000 }
+        );
+    }
 }
 
 function renderMap() {
@@ -1129,22 +1247,30 @@ function renderMap() {
     }
     window.mapCircles = [];
 
-    // Draw user location pin
-    const userIcon = L.divIcon({
-        className: 'user-location-pin-container',
-        html: `
-            <div class="relative flex items-center justify-center w-8 h-8">
-                <div class="absolute inset-0 bg-emerald-600/25 rounded-full animate-ping"></div>
-                <div class="relative w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-md border border-emerald-600">
-                    <div class="w-2.5 h-2.5 bg-emerald-600 rounded-full"></div>
+    // Draw user location pin (use real geolocation if available)
+    const userLat = state.userLat || null;
+    const userLng = state.userLng || null;
+    
+    if (userLat !== null && userLng !== null) {
+        const userIcon = L.divIcon({
+            className: 'user-location-pin-container',
+            html: `
+                <div class="relative flex items-center justify-center w-10 h-10">
+                    <div class="absolute inset-0 bg-emerald-600/20 rounded-full animate-ping"></div>
+                    <div class="absolute inset-1 bg-emerald-600/10 rounded-full"></div>
+                    <div class="relative w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-emerald-600">
+                        <div class="w-2.5 h-2.5 bg-emerald-600 rounded-full"></div>
+                    </div>
                 </div>
-            </div>
-        `,
-        iconSize: [32, 32],
-        iconAnchor: [16, 16]
-    });
-    const userMarker = L.marker([41.21, -124.00], { icon: userIcon }).addTo(window.capdexMap);
-    window.mapMarkers.push(userMarker);
+            `,
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
+        const userMarker = L.marker([userLat, userLng], { icon: userIcon, zIndexOffset: 1000 }).addTo(window.capdexMap);
+        userMarker.bindTooltip("Your Location", { direction: 'top', offset: [0, -20], className: 'leaflet-tooltip-custom' });
+        window.userLocationMarker = userMarker;
+        window.mapMarkers.push(userMarker);
+    }
 
     // Draw Hotspot Biome Circles
     hotspots.forEach(spot => {
@@ -1180,9 +1306,9 @@ function renderMap() {
 
     // Render filtered markers on map
     filteredSpecimens.forEach(spec => {
-        // Fallback if missing latitude/longitude
-        const lat = spec.latitude !== undefined ? spec.latitude : 41.21;
-        const lng = spec.longitude !== undefined ? spec.longitude : -124.00;
+        // Fallback if missing latitude/longitude (use user's real location if available)
+        const lat = spec.latitude !== undefined ? spec.latitude : (state.userLat || 0);
+        const lng = spec.longitude !== undefined ? spec.longitude : (state.userLng || 0);
 
         const markerColor = spec.rarity === "Epic" ? "#8b5cf6" : (spec.rarity === "Rare" ? "#0ea5e9" : "#64748b");
         const pinIcon = L.divIcon({
@@ -1220,8 +1346,8 @@ function renderMap() {
             listContainer.innerHTML = `<div class="text-xs text-outline italic text-center py-4">No discovered specimens match these filters.</div>`;
         } else {
             filteredSpecimens.forEach(spec => {
-                const lat = spec.latitude !== undefined ? spec.latitude : 41.21;
-                const lng = spec.longitude !== undefined ? spec.longitude : -124.00;
+                const lat = spec.latitude !== undefined ? spec.latitude : (state.userLat || 0);
+                const lng = spec.longitude !== undefined ? spec.longitude : (state.userLng || 0);
                 
                 const item = document.createElement("div");
                 item.className = "flex items-center justify-between p-2 rounded-xl bg-surface-variant/30 hover:bg-surface-variant/60 cursor-pointer border border-transparent hover:border-primary/10 transition-all";

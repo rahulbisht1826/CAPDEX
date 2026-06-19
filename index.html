@@ -488,27 +488,45 @@
                     </div>
 
                     <!-- Map container -->
-                    <div id="map-drag-container" class="relative w-full h-[550px] rounded-3xl overflow-hidden clay-card select-none bg-[#eaf4fc] border border-outline-variant/30">
-                        
+                    <div id="map-drag-container" class="relative w-full h-[600px] rounded-3xl overflow-hidden clay-card select-none border border-outline-variant/30">
 
                         <!-- Real Leaflet Map -->
                         <div id="real-leaflet-map" class="w-full h-full z-10"></div>
 
-                        <!-- Floating map control HUD -->
-                        <div class="absolute bottom-6 right-6 z-[1000] flex flex-col gap-2">
-                            <button id="btn-map-zoom-in" class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 text-primary border border-slate-100 transition-transform">
-                                <span class="material-symbols-outlined">add</span>
+                        <!-- Map Style Switcher (Top-Left) -->
+                        <div class="absolute top-4 left-4 z-[1000] flex gap-1.5 bg-white/90 backdrop-blur-lg rounded-2xl p-1.5 shadow-xl border border-white/60">
+                            <button id="btn-map-style-street" class="map-style-btn px-3.5 py-2 rounded-xl text-[10px] font-bold bg-secondary text-white shadow-sm transition-all" data-style="street">
+                                <span class="material-symbols-outlined text-[14px] align-middle mr-0.5">map</span> Street
                             </button>
-                            <button id="btn-map-zoom-out" class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 text-primary border border-slate-100 transition-transform">
-                                <span class="material-symbols-outlined">remove</span>
+                            <button id="btn-map-style-satellite" class="map-style-btn px-3.5 py-2 rounded-xl text-[10px] font-bold text-primary hover:bg-slate-100 transition-all" data-style="satellite">
+                                <span class="material-symbols-outlined text-[14px] align-middle mr-0.5">satellite_alt</span> Satellite
                             </button>
-                            <button id="btn-map-recenter" class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 text-primary border border-slate-100 transition-transform">
-                                <span class="material-symbols-outlined">my_location</span>
+                            <button id="btn-map-style-topo" class="map-style-btn px-3.5 py-2 rounded-xl text-[10px] font-bold text-primary hover:bg-slate-100 transition-all" data-style="topo">
+                                <span class="material-symbols-outlined text-[14px] align-middle mr-0.5">terrain</span> Topo
                             </button>
                         </div>
 
+                        <!-- Floating map control HUD (Bottom-Right) -->
+                        <div class="absolute bottom-6 right-6 z-[1000] flex flex-col gap-2">
+                            <button id="btn-map-zoom-in" class="w-11 h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 text-primary border border-slate-100 transition-transform">
+                                <span class="material-symbols-outlined text-[20px]">add</span>
+                            </button>
+                            <button id="btn-map-zoom-out" class="w-11 h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 text-primary border border-slate-100 transition-transform">
+                                <span class="material-symbols-outlined text-[20px]">remove</span>
+                            </button>
+                            <div class="w-full h-px bg-slate-200 my-0.5"></div>
+                            <button id="btn-map-recenter" class="w-11 h-11 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 text-secondary border border-slate-100 transition-transform">
+                                <span class="material-symbols-outlined text-[20px]">my_location</span>
+                            </button>
+                        </div>
+
+                        <!-- Coordinates display (Bottom-Left, above popup) -->
+                        <div id="map-coords-display" class="absolute bottom-6 left-6 z-[999] bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-[10px] font-mono tracking-wide shadow-lg pointer-events-none">
+                            Lat: 0.00 &nbsp; Lng: 0.00
+                        </div>
+
                         <!-- Mini Floating Specimen details drawer (shows up when clicking a marker) -->
-                        <div id="map-specimen-popup" class="absolute bottom-6 left-6 w-80 z-[1000] hidden">
+                        <div id="map-specimen-popup" class="absolute bottom-16 left-6 w-80 z-[1000] hidden">
                             <!-- Filled dynamically via app.js -->
                         </div>
                     </div>
@@ -516,6 +534,31 @@
                 
                 <!-- Right Panel: Biome Guide & Side Info Panel -->
                 <div class="lg:col-span-4 flex flex-col gap-6">
+                    <!-- Map Legend -->
+                    <div class="clay-card p-5 bg-white">
+                        <h3 class="font-bold text-sm text-primary mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">info</span> Map Legend
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-emerald-600 ring-2 ring-emerald-600/30"></div>
+                                <span class="text-[10px] text-on-surface-variant">Your Location</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-slate-500 ring-2 ring-slate-500/30"></div>
+                                <span class="text-[10px] text-on-surface-variant">Common</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-sky-500 ring-2 ring-sky-500/30"></div>
+                                <span class="text-[10px] text-on-surface-variant">Rare</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-violet-500 ring-2 ring-violet-500/30"></div>
+                                <span class="text-[10px] text-on-surface-variant">Epic</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Biome Directory list card -->
                     <div class="clay-card p-6 flex flex-col gap-4 bg-white">
                         <h3 class="font-headline-lg text-lg font-bold text-primary">Reserve Biomes</h3>
