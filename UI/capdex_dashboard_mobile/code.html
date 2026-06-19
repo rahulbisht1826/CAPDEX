@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Claymorphism Effect */
+        .clay-card {
+            background: #f6faf7;
+            border-radius: 24px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.08),
+                inset -6px -6px 12px rgba(15, 82, 56, 0.1),
+                inset 6px 6px 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .clay-card-primary {
+            background: #2d6a4f;
+            border-radius: 24px;
+            box-shadow: 
+                10px 10px 20px rgba(15, 82, 56, 0.2),
+                inset -6px -6px 10px rgba(0, 33, 20, 0.3),
+                inset 6px 6px 10px rgba(168, 231, 197, 0.3);
+        }
+
+        .clay-button-secondary {
+            background: #74C69D;
+            border-radius: 16px;
+            box-shadow: 
+                4px 4px 8px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(14, 108, 74, 0.2),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.4);
+        }
+
+        .clay-inset-field {
+            background: #ebefec;
+            border-radius: 16px;
+            box-shadow: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.05),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+        }
+
+        /* Glassmorphism Effect */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes pulse-epic {
+            0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+        }
+        .animate-epic {
+            animation: pulse-epic 2s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#a0f4c8",
+                        "primary-fixed": "#b1f0ce",
+                        "outline": "#707973",
+                        "on-primary-fixed": "#002114",
+                        "inverse-surface": "#2d3130",
+                        "tertiary-fixed": "#d4e3ff",
+                        "primary-fixed-dim": "#95d4b3",
+                        "surface-dim": "#d7dbd8",
+                        "tertiary": "#004884",
+                        "secondary": "#0e6c4a",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "primary-container": "#2d6a4f",
+                        "surface-container": "#ebefec",
+                        "secondary-container": "#a0f4c8",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#181d1b",
+                        "on-primary-container": "#a8e7c5",
+                        "inverse-primary": "#95d4b3",
+                        "surface": "#f6faf7",
+                        "surface-container-high": "#e5e9e6",
+                        "on-tertiary-fixed": "#001c39",
+                        "on-tertiary-container": "#c4dbff",
+                        "background": "#f6faf7",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#404943",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "surface-bright": "#f6faf7",
+                        "surface-variant": "#dfe3e1",
+                        "surface-container-low": "#f1f5f2",
+                        "inverse-on-surface": "#eef2ef",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#181d1b",
+                        "error": "#ba1a1a",
+                        "primary": "#0f5238",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#2c694e",
+                        "on-secondary-container": "#19724f",
+                        "tertiary-container": "#0060ad",
+                        "surface-container-highest": "#dfe3e1",
+                        "outline-variant": "#bfc9c1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-desktop": "32px",
+                        "gutter": "16px",
+                        "container-padding-mobile": "16px",
+                        "card-gap": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "title-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top AppBar Execution -->
+<header class="bg-white/60 backdrop-blur-xl flex justify-between items-center w-full px-container-padding-mobile h-16 sticky top-0 z-50 border-b border-white/40">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">CAPDEX</div>
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<main class="px-container-padding-mobile mt-6 space-y-8">
+<!-- Search Bar Inset -->
+<section>
+<div class="clay-inset-field px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface-variant placeholder:text-outline font-body-md" placeholder="Search specimens, habitats, or rarity..." type="text"/>
+</div>
+</section>
+<!-- Stats Cards Grid -->
+<section class="grid grid-cols-2 gap-4">
+<div class="clay-card p-4 flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Scans</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">1,284</span>
+</div>
+<div class="clay-card p-4 flex flex-col items-center justify-center text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Rarity Score</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-secondary">8.2k</span>
+</div>
+</section>
+<!-- Epic Finding Featured Card -->
+<section>
+<h2 class="font-title-md text-title-md mb-4 text-primary">Epic Finding</h2>
+<div class="clay-card-primary p-6 relative overflow-visible">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="inline-block bg-violet-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-2 animate-epic">Epic</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-white">Azure Winged Moth</h3>
+<p class="text-on-primary-container font-body-md">Discovered 2h ago • Redwood Forest</p>
+</div>
+</div>
+<div class="flex justify-between items-end mt-8">
+<button class="clay-button-secondary px-6 py-2 text-primary font-bold text-label-sm active:scale-95 transition-transform">
+                        VIEW ENTRY
+                    </button>
+<div class="w-32 h-32 absolute -right-4 -top-8 rotate-12 group">
+<img class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-110" data-alt="A highly detailed 3D digital illustration of a rare, iridescent blue moth with glowing wing patterns, appearing to pop out of a soft claymorphic frame. The background is a lush, bokeh-blurred forest in soft greens and teals. The lighting is ethereal and atmospheric, emphasizing the adventurous and scientific discovery theme of the CAPDEX app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk5YdHgdZ0fvx7NxgDLIJenqXYIgyhO-7wPE_V27WzhrxLc06J3ByxxZEfLxg1nXK8N1BP6_eksj7iE8h9zkFrHn-cDNr-cdK0YOkAyPFl5LP9vBnE_gKRz1M-pCqvHoSb3hRcNu9N_HkJpOqp0mpohzN4Oyhmeg3-ksGCZGWAbj_T0a1XQYA6pUc840Ur_MqoyZ_NVuBnFOnQY6LqM4hydWXy-SpLrA6_K3frTsRmOb_JP0oRc7hFeNg0o6DApDZS87HEOTACus4"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Horizontal Explore Categories -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-title-md text-title-md text-primary">Explore</h2>
+<button class="text-secondary font-bold text-label-sm">See All</button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+<!-- Category 1 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="clay-card aspect-square flex items-center justify-center bg-secondary-fixed/30 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="A stylized, colorful 3D icon of an exotic orchid flower set against a soft, rounded light-mode surface. The aesthetic is clean and scientific yet playful, using a palette of soft teals and vibrant pinks. Soft claymorphic shadows create a tactile, touchable feel consistent with a nature exploration kit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7mlVA_gv3UkcDFBLuyYSw1svIf8nbVvp6VEz7F3Kuou-otaMgScM6E30bEqFWi1Bez3EQSWewZ7hPRo5opoh5gBeftqWkEcqVqJQVCSU0bGNiW_Zbw-eV5kK3AoXbDZSjkFFXVHri-Hx4-B6SlpLSMg_F59fMM2lcCrsVIXlgAwhzzuhJGBEoMXDDYwYHQdyAhf6ElBUZBDc6-TYMXAyy-tdA29uyALaa_-gKJrqZbrl38VsQtTt93-4OsDLyvNfl5SKgEN5s1x0"/>
+</div>
+<p class="text-center font-label-sm text-label-sm text-on-surface">Flora</p>
+</div>
+<!-- Category 2 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="clay-card aspect-square flex items-center justify-center bg-tertiary-fixed/30 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="A minimalist 3D rendering of a rare beetle with a metallic gold shell, positioned on a clean white specimen pedestal. The lighting is bright and modern, creating sharp reflections and soft ambient occlusion shadows. The color scheme features secondary greens and deep emeralds, evoking a premium digital collection experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUj_mFS65kBuqQE8toXfamBgrWgg1hmo_-oOzgAqXaslAr820HF4pRuB5ecbSAhVGU8If47bnB5QkaE5aKhOZnjdzcBaB7p8P_xU4anlzd1MqgZpEIOk4lRaIebYKJpx2x_VFhfIfZZYhJPxe_qhjg8lwtbCa0d8Ypc22lxz44zeP3kf6jrrikQfNbPuS7v1ZtpO0nugjbH03CUKcyiYPu-ofYYALVCCKt6vMkjMa2fsmnh1YNPcxhKmyiimCn_PS2KCerMoTOUcU"/>
+</div>
+<p class="text-center font-label-sm text-label-sm text-on-surface">Insects</p>
+</div>
+<!-- Category 3 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="clay-card aspect-square flex items-center justify-center bg-primary-fixed/30 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="A vibrant 3D stylized representation of a crystalline mineral cluster with translucent facets and soft inner glows. The style is adventurous and curiosity-driven, set within a bright light-mode UI. Soft, large shadows provide depth, making the object feel like a physical specimen in a digital kit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEvvDVclNx4WRfH6LfDFSAeqSC7CLrjF7aDmThPA0POCGfneVHRhsXWG9E4aKpz3bdW-_Q2aLfBTYdYWdXvr8hNlhnFegVW_01_gDBjTD_gOGX09mFZCogdwpHyoBIORIs-pns_79Yppc4oiys4VojTf0cRQ79Kncni0yx0DZ_YkU69kzuatyIUVJYre5NPou_iJjiitenoaY0pqrVQzarPiBqv0MDGMt0YHF0WZwKpuSqJYDj2tFt_12gYFKEQ1MWYVaNCZ2fWv8"/>
+</div>
+<p class="text-center font-label-sm text-label-sm text-on-surface">Minerals</p>
+</div>
+<!-- Category 4 -->
+<div class="flex-shrink-0 w-32 space-y-2">
+<div class="clay-card aspect-square flex items-center justify-center bg-surface-container-highest overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="A detailed digital 3D model of a rare tropical bird's feather, showing fine textures and shimmering iridescent colors. The lighting is high-key and clean, fitting a modern science-discovery dashboard. The aesthetic blends claymorphic tactile depth with a professional, taxonomic presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnt26e-yirS-__ZOH94xYU6KJUYgcmJT2UjQEJj1D9NbrLFX7cYYm7w9C7pZRFTKwM5afA9-yG3S-b9aVeP2vzfxUW9d9D2RkKoe7qjZiwoCnrLYHFMfC35xbl1zhiljEn0XoKikS38PxVY5j0Nw_4s98lv1P0d_2bcelmgAYvdfxXdtRqa3G0b8LLVQZZQC-2i6q7YTmOpUTW8vWUV73b9ViYOgdH1m-dw8RWqNnRr9Hv1rCwM25L_-NqGvDlrC9c78ftg2d9qIY"/>
+</div>
+<p class="text-center font-label-sm text-label-sm text-on-surface">Avian</p>
+</div>
+</div>
+</section>
+<!-- Recent Activity Feed -->
+<section class="space-y-4">
+<h2 class="font-title-md text-title-md text-primary">Recent Activity</h2>
+<div class="clay-card p-4 flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macroscopic 3D photograph of a mossy rock fragment with tiny glowing fungi, captured in a clean studio lighting style. The colors are earthy browns and vibrant neon greens, emphasizing the curious and tactile nature of the CAPDEX collection. Soft shadows suggest the item is slightly raised above the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWCaQyWzDXX4e9DTgkZuuccb5V3K1gjNoSkmDA84BY2v0PBJdzGPucYRs4jY1GChp0W4f_CJcfN7rCZAjsPUey-VcEocVCERSJKkdE0w3-T8aC5aZ7cOqUTf6lvn6mta_2-NONQslS319_ktbWy_5Ay95Wg-1LMK55i6RgjanMN0zmTRl45LMGqTcUl-CS2Y3MPE4pImS4Q_diSnCSVGOBKlXUt-NZn6X07K8079bWbQapB9a0w6oo3N0YPEj6bmc6cz4HHvEd4bI"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Glowing Lichen</h4>
+<p class="text-label-sm text-on-surface-variant">Rare • 25m ago</p>
+</div>
+<span class="material-symbols-outlined text-secondary">chevron_right</span>
+</div>
+<div class="clay-card p-4 flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A beautifully rendered 3D specimen of a fossilized ammonite shell, showing detailed spiral patterns and a slightly pearlescent finish. The scene is bright and professional, using soft shadows to create a claymorphic depth effect. The palette is dominated by neutral greys and sandy beiges, aligned with the scientific kit theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANfsTvOmT7sgeijgDp9RS3DW_3IMq33HCj7l6Ka1pTbqEkIe8BPrsyi6R144qiT3LUjd2OE8fri6lZOafTEWYY9kV3-ptnJedgGLbDqvawYAZV9LjVIFYYtIXKFGh-MCfD59ZQaIoY6TIW90QuYDtHUrAorHqKcEgh12XKDbvQLh3KaajZh6o2zuen9SqviVJpAjDeJCa_NUXT8jW97kNtqSYQRVDvcF9IBnVF_HxUTJaQLG0ZzREjR6vpjWnSBNyqdoYBlJMAvfo"/>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface">Ancient Ammonite</h4>
+<p class="text-label-sm text-on-surface-variant">Common • 1h ago</p>
+</div>
+<span class="material-symbols-outlined text-secondary">chevron_right</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Execution -->
+<nav class="fixed bottom-6 left-4 right-4 z-50 glass-nav rounded-full h-20 flex justify-around items-center px-4 shadow-xl lg:hidden">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full w-12 h-12 shadow-inner transition-all scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-[10px] uppercase">Dex</span>
+</a>
+<!-- Center Action Button -->
+<a class="relative -top-6" href="#">
+<div class="clay-card-primary w-16 h-16 flex items-center justify-center text-white shadow-2xl transition-transform active:scale-90">
+<span class="material-symbols-outlined text-3xl">photo_camera</span>
+</div>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-[10px] uppercase">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-[10px] uppercase">Map</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for button depression
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('touchstart', () => {
+                elem.style.transform = 'scale(0.95)';
+            });
+            elem.addEventListener('touchend', () => {
+                elem.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add scroll animation logic for explore cards
+        const exploreScroll = document.querySelector('.hide-scrollbar');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        exploreScroll.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - exploreScroll.offsetLeft;
+            scrollLeft = exploreScroll.scrollLeft;
+        });
+        exploreScroll.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        exploreScroll.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        exploreScroll.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - exploreScroll.offsetLeft;
+            const walk = (x - startX) * 2;
+            exploreScroll.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body></html>

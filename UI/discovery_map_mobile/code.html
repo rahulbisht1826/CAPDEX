@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CAPDEX - Discovery Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Claymorphism Effect */
+        .clay-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.05),
+                inset -6px -6px 12px rgba(15, 82, 56, 0.05),
+                inset 6px 6px 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .clay-marker {
+            background: #ffffff;
+            box-shadow: 
+                4px 4px 8px rgba(0, 0, 0, 0.1),
+                inset -3px -3px 6px rgba(116, 198, 157, 0.2),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.9);
+        }
+
+        /* Glassmorphism Effect */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .pulse-effect {
+            position: absolute;
+            border-radius: 50%;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#a0f4c8",
+                      "primary-fixed": "#b1f0ce",
+                      "outline": "#707973",
+                      "on-primary-fixed": "#002114",
+                      "inverse-surface": "#2d3130",
+                      "tertiary-fixed": "#d4e3ff",
+                      "primary-fixed-dim": "#95d4b3",
+                      "surface-dim": "#d7dbd8",
+                      "tertiary": "#004884",
+                      "secondary": "#0e6c4a",
+                      "secondary-fixed-dim": "#85d7ad",
+                      "primary-container": "#2d6a4f",
+                      "surface-container": "#ebefec",
+                      "secondary-container": "#a0f4c8",
+                      "on-tertiary-fixed-variant": "#004883",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-background": "#181d1b",
+                      "on-primary-container": "#a8e7c5",
+                      "inverse-primary": "#95d4b3",
+                      "surface": "#f6faf7",
+                      "surface-container-high": "#e5e9e6",
+                      "on-tertiary-fixed": "#001c39",
+                      "on-tertiary-container": "#c4dbff",
+                      "background": "#f6faf7",
+                      "on-secondary-fixed-variant": "#005236",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#404943",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002113",
+                      "tertiary-fixed-dim": "#a4c9ff",
+                      "surface-bright": "#f6faf7",
+                      "surface-variant": "#dfe3e1",
+                      "surface-container-low": "#f1f5f2",
+                      "inverse-on-surface": "#eef2ef",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#181d1b",
+                      "error": "#ba1a1a",
+                      "primary": "#0f5238",
+                      "on-error": "#ffffff",
+                      "surface-tint": "#2c694e",
+                      "on-secondary-container": "#19724f",
+                      "tertiary-container": "#0060ad",
+                      "surface-container-highest": "#dfe3e1",
+                      "outline-variant": "#bfc9c1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-padding-desktop": "32px",
+                      "gutter": "16px",
+                      "container-padding-mobile": "16px",
+                      "card-gap": "20px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "title-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-hidden selection:bg-secondary-container">
+<!-- Discovery Map Canvas -->
+<main class="relative h-screen w-full bg-surface-dim overflow-hidden">
+<!-- Interactive Map Background -->
+<div class="absolute inset-0 z-0" data-alt="A top-down stylized topographic discovery map of Olympic National Park. The visual style is clean and adventurous, featuring lush green forest elevations, winding blue river veins, and soft grey trail markers. The lighting is bright and natural, reflecting a curious and tactile digital specimen kit aesthetic with soft organic textures. The color palette is dominated by deep primary greens and soft secondary mint tones." data-location="Olympic National Park forest" style="">
+<img alt="Discovery Map" class="w-full h-full object-cover grayscale-[0.2] contrast-[0.9]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg0IdoJzRu18cbXtf3aQFEiSgDrwaMqVk8Ue15vrPEPODZ97gVMSJddTkIwcLnNc7SvnbKYPNiZXe8q8C-5MB2355c9nT3zkRUwGDYdrfmrrIzz7YsCagpNwsOGKZyGvjlYiI2qReTeeAo5GFQlOr5pweDCxrIHQpgOECi6z97QO1M3Fiapa5vp-7JSevoL2A6m5KWCcRsH2k5fm6X_vNguUkOw85VmT8HhWjV-qEjgSInTUDnm-ZS-TEi_o_TUtZQUuuO_ZENWuY"/>
+</div>
+<!-- Top Search Bar Overlay -->
+<header class="absolute top-0 left-0 right-0 z-50 p-container-padding-mobile">
+<div class="glass-panel flex items-center h-14 rounded-full px-4 shadow-xl">
+<span class="material-symbols-outlined text-primary mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-on-surface-variant font-body-md placeholder:text-outline" placeholder="Search ecosystems or species..." type="text"/>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+</button>
+</div>
+</header>
+<!-- Claymorphic Map Markers (Simulated Interactive Points) -->
+<!-- Marker 1: Rare Sighting -->
+<div class="absolute top-[35%] left-[60%] z-10">
+<div class="pulse-effect bg-tertiary w-12 h-12"></div>
+<div class="clay-marker w-14 h-14 rounded-full border-4 border-white flex items-center justify-center cursor-pointer transform active:scale-90 transition-transform">
+<div class="w-10 h-10 rounded-full overflow-hidden" data-alt="Close up of a rare bioluminescent mushroom found in a dense mossy forest. The style is adventurous and scientific, emphasizing textures of the fungi and vibrant azure light glowing from within. The color palette matches the rare rarity token with soft azure and deep violet accents.">
+<img alt="Specimen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwj1OfMZgu8hEDV0zgNF18j_MeSuU_aphoootZfe3CbkZ__V-ePv9VIojtxDJoPzRN1UfiYmjSQEQ9hSfQsfBcKSs-HXQcHqE5mjxFWpL9wFoCfHniabJg-bmrC_LfN63Yb2WEQ8vLjX54ZYn_pwVkDFwL2tHCHDYwH0eploUdmobBuDRm261PYC2xB18r0htsen2rWp9WdYh6Bp3Ty_FnQJvKHQrBDgab6clT0V2pvv7LMN2BliEdBQZmAfrZFOQP6pjLinq7t28"/>
+</div>
+</div>
+<div class="bg-tertiary text-white text-[10px] font-bold px-2 py-0.5 rounded-full absolute -top-1 -right-2 shadow-sm">RARE</div>
+</div>
+<!-- Marker 2: Unidentified Signal -->
+<div class="absolute top-[55%] left-[25%] z-10">
+<div class="pulse-effect bg-secondary w-16 h-16"></div>
+<div class="clay-marker w-12 h-12 rounded-full border-4 border-white flex items-center justify-center bg-secondary-container">
+<span class="material-symbols-outlined text-on-secondary-container text-2xl">question_mark</span>
+</div>
+</div>
+<!-- Marker 3: Common Sighting -->
+<div class="absolute top-[20%] left-[40%] z-10">
+<div class="clay-marker w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden">
+<div class="w-full h-full" data-alt="A common Pacific Tree Frog resting on a vibrant green leaf. Captured with a macro lens, focusing on the tactile skin texture and adventurous outdoor mood. The lighting is high-key and natural, consistent with the CAPDEX digital specimen kit aesthetic.">
+<img alt="Specimen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGIcUKVxiib-x2gKbdhBg1Wx10rGg-5fbMZsRP-FCYYEMc54cO3TW2aCxcVuLnzyZ0dN2fOH0CugAPgVt7TFl0nFrBKkJVIvJJftVLZ-NKCfCNmrLGlmCW0GylrRLjhGyTw5j2ULOh3kcoYTx1mxNKjef4EYpG55_YXOKsmJbctstWeUgIJS-f41GLzDySADQh8Qe5S7-ynhT6_WvBhzCY1Q40xQJYPipkNpJmJZnqD-g4rBYrVGWxCmHmdDuXNrB2y61ZyqhtWJY"/>
+</div>
+</div>
+</div>
+<!-- Nearby Species Floating Panel -->
+<section class="absolute bottom-32 left-4 right-4 z-40">
+<div class="glass-panel p-5 rounded-[32px] shadow-2xl">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-title-md text-title-md text-primary">Nearby Species</h2>
+<span class="font-label-sm text-label-sm text-outline-variant">3 SIGNALS DETECTED</span>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<!-- Unidentified Card -->
+<div class="min-w-[140px] clay-card p-3 flex flex-col items-center gap-2 border border-white/50">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-3xl">sensors</span>
+</div>
+<p class="text-[12px] font-bold text-outline text-center leading-tight">Weak Signal<br/><span class="font-normal opacity-70">40m away</span></p>
+</div>
+<!-- Common Spotted Card -->
+<div class="min-w-[140px] clay-card p-3 flex flex-col items-center gap-2 border border-white/50">
+<div class="w-16 h-16 rounded-full overflow-hidden" data-alt="A vibrant red Northern Cardinal bird perched on a snowy branch. The photography style is scientific yet warm, showing intricate feather details against a bright, airy background. Part of the common species collection in the nature exploration app.">
+<img alt="Cardinal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvSmwStbs9mKkw558DRUOU5-fyC-j_f8k26nlQ9FX8NB00MNjJQbJO-C34T5tCKXQtJYYtfWL3UDJLJZXzh3Z00UpQtcBGaIltjvU9X_HJeVnwjxqiJQGuSklnLzt1OjO8Hq-zO-NylBD-W9QYMSczfVuMaUIByYjw56P7RIpYIgCxSbH2lEf47qfsLJL9T0GI7Wp3hq9cxjXZbGDFeZMTDwUROREKHWMYfH9hKceUONNw3VXeX3RGoM11c8ZErC2WHHqGSdNCoiA"/>
+</div>
+<div class="text-center">
+<p class="text-[12px] font-bold text-primary">Cardinal</p>
+<span class="bg-outline/10 text-outline px-2 py-px rounded-full text-[9px] font-bold uppercase tracking-wider">Common</span>
+</div>
+</div>
+<!-- Another Signal -->
+<div class="min-w-[140px] clay-card p-3 flex flex-col items-center gap-2 border border-white/50">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">history</span>
+</div>
+<p class="text-[12px] font-bold text-secondary text-center leading-tight">Last Spotted<br/><span class="font-normal opacity-70">2 hrs ago</span></p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Navigation Shell (From JSON Guidance) -->
+<nav class="fixed bottom-6 left-4 right-4 z-50 flex justify-around items-center px-4 glass-panel h-20 rounded-full shadow-xl border border-white/40">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Dex -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm">Dex</span>
+</a>
+<!-- Scan (FAB Action) -->
+<button class="relative -top-6 flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full w-16 h-16 shadow-inner active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">photo_camera</span>
+</button>
+<!-- Rank -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-label-sm">Rank</span>
+</a>
+<!-- Map (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full w-12 h-12 shadow-inner scale-100 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-sm text-label-sm font-bold">Map</span>
+</a>
+</nav>
+<!-- Map Controls (Zoom / Recenter) -->
+<aside class="absolute right-4 top-[20%] flex flex-col gap-3 z-30">
+<button class="glass-panel w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">my_location</span>
+</button>
+<button class="glass-panel w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">add</span>
+</button>
+<button class="glass-panel w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">remove</span>
+</button>
+</aside>
+<!-- Atmospheric Effect Overlay -->
+<div class="absolute inset-0 pointer-events-none opacity-20 bg-gradient-to-t from-black/20 via-transparent to-white/10 z-0"></div>
+</main>
+<script>
+        // Micro-interactions for map markers
+        document.querySelectorAll('.clay-marker').forEach(marker => {
+            marker.addEventListener('click', () => {
+                marker.classList.add('scale-125');
+                setTimeout(() => marker.classList.remove('scale-125'), 300);
+            });
+        });
+
+        // Simple parallax or movement simulation for the map could be added here
+        // For now, handling the "Scan" button tap effect
+        const scanBtn = document.querySelector('button.bg-secondary-container');
+        scanBtn.addEventListener('click', () => {
+            // Trigger a quick haptic-like visual pulse
+            scanBtn.style.transform = 'scale(0.85)';
+            setTimeout(() => {
+                scanBtn.style.transform = 'scale(1)';
+            }, 100);
+        });
+    </script>
+</body></html>

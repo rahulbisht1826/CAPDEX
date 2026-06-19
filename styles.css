@@ -1,0 +1,302 @@
+/* CAPDEX Design System Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+:root {
+    /* Color Palette from DESIGN.md */
+    --color-primary: #0f5238;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #2d6a4f;
+    --color-on-primary-container: #a8e7c5;
+    
+    --color-secondary: #0e6c4a;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #a0f4c8;
+    --color-on-secondary-container: #19724f;
+    
+    --color-tertiary: #004884;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #0060ad;
+    --color-on-tertiary-container: #c4dbff;
+    
+    --color-background: #f6faf7;
+    --color-on-background: #181d1b;
+    
+    --color-surface: #f6faf7;
+    --color-on-surface: #181d1b;
+    --color-on-surface-variant: #404943;
+    
+    --color-surface-low: #f1f5f2;
+    --color-surface-container: #ebefec;
+    --color-surface-high: #e5e9e6;
+    --color-surface-highest: #dfe3e1;
+    
+    --color-outline: #707973;
+    --color-outline-variant: #bfc9c1;
+    
+    /* Rarity Palette */
+    --rarity-common-start: #64748b;
+    --rarity-common-end: #334155;
+    --rarity-rare-start: #0ea5e9;
+    --rarity-rare-end: #0369a1;
+    --rarity-epic-start: #7c3aed;
+    --rarity-epic-end: #4c1d95;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    overflow-x: hidden;
+}
+
+/* Material Symbols Outlined Custom Settings */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.material-symbols-fill {
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Claymorphic Elements */
+.clay-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 
+        12px 12px 24px rgba(0, 0, 0, 0.04),
+        -12px -12px 24px #ffffff,
+        inset 4px 4px 10px rgba(255, 255, 255, 0.9),
+        inset -6px -6px 12px rgba(15, 82, 56, 0.05);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.clay-card-interactive:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        16px 16px 32px rgba(0, 0, 0, 0.06),
+        -16px -16px 32px #ffffff;
+}
+
+.clay-card-interactive:active {
+    transform: scale(0.98);
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.03),
+        inset 4px 4px 8px rgba(0, 0, 0, 0.05),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+}
+
+.clay-inset {
+    background: #f1f5f2;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    border: none;
+}
+
+.clay-inset:focus-within {
+    box-shadow: 
+        inset 6px 6px 12px rgba(15, 82, 56, 0.08),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+    outline: none;
+}
+
+.clay-pedestal {
+    background: #f1f5f2;
+    border-radius: 50%;
+    box-shadow: 
+        16px 16px 32px rgba(0, 0, 0, 0.04),
+        inset -10px -10px 20px rgba(15, 82, 56, 0.08),
+        inset 10px 10px 20px rgba(255, 255, 255, 1);
+    aspect-ratio: 1/1;
+}
+
+.clay-button-primary {
+    background: #74c69d;
+    color: #002113;
+    box-shadow: 
+        4px 4px 10px rgba(116, 198, 157, 0.3),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.1),
+        inset 3px 3px 6px rgba(255, 255, 255, 0.4);
+    border-radius: 9999px;
+    font-weight: 700;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.clay-button-primary:hover {
+    background: #8ad2ad;
+    transform: translateY(-2px);
+    box-shadow: 
+        6px 6px 14px rgba(116, 198, 157, 0.4),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.clay-button-primary:active {
+    transform: scale(0.96);
+    box-shadow: 
+        2px 2px 5px rgba(116, 198, 157, 0.2),
+        inset 3px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Glassmorphism Elements */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Rarity Badges and Gradients */
+.rarity-common {
+    background: linear-gradient(135deg, var(--rarity-common-start), var(--rarity-common-end));
+    box-shadow: 0 4px 10px rgba(51, 65, 85, 0.2);
+}
+
+.rarity-rare {
+    background: linear-gradient(135deg, var(--rarity-rare-start), var(--rarity-rare-end));
+    box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+}
+
+.rarity-epic {
+    background: linear-gradient(135deg, var(--rarity-epic-start), var(--rarity-epic-end));
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+.rarity-epic-glow {
+    animation: epic-pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes epic-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 4px 25px rgba(124, 58, 237, 0.7);
+        transform: scale(1.03);
+    }
+}
+
+/* No Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Scanning Overlay Animations */
+.scanner-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+.scanner-laser {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #74c69d, #2d6a4f, #74c69d, transparent);
+    box-shadow: 0 0 15px #74c69d, 0 0 5px #ffffff;
+    animation: laser-scan 3s infinite linear;
+    z-index: 10;
+    pointer-events: none;
+}
+
+@keyframes laser-scan {
+    0% { top: 0%; }
+    50% { top: 100%; }
+    100% { top: 0%; }
+}
+
+.scanner-grid {
+    position: absolute;
+    inset: 0;
+    background-size: 30px 30px;
+    background-image: 
+        linear-gradient(to right, rgba(116, 198, 157, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(116, 198, 157, 0.1) 1px, transparent 1px);
+    pointer-events: none;
+}
+
+/* Map Grid and Styles */
+.map-canvas-container {
+    background-color: #f1f6f3;
+    background-image: radial-gradient(#d6deda 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
+    cursor: grab;
+}
+
+.map-canvas-container:active {
+    cursor: grabbing;
+}
+
+.map-marker {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.map-marker:hover {
+    transform: scale(1.15) translateY(-5px);
+    z-index: 50;
+}
+
+.marker-bounce {
+    animation: marker-pulse 2s infinite ease-in-out;
+}
+
+@keyframes marker-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* Custom transitions between tabs */
+.view-tab {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.view-tab.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Star rating fill style */
+.star-rating span {
+    font-size: 20px;
+    color: #e5e9e6;
+    transition: color 0.15s ease;
+}
+
+.star-rating span.filled {
+    color: #0e6c4a;
+    font-variation-settings: 'FILL' 1;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

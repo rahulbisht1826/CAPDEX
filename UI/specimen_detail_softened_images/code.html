@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAPDEX - Specimen Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#0060ad",
+                        "surface-bright": "#f6faf7",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eef2ef",
+                        "inverse-surface": "#2d3130",
+                        "on-surface": "#181d1b",
+                        "surface-container-highest": "#dfe3e1",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#a0f4c8",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "surface-dim": "#d7dbd8",
+                        "outline": "#707973",
+                        "on-secondary-fixed": "#002113",
+                        "on-secondary-container": "#19724f",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#a8e7c5",
+                        "tertiary": "#004884",
+                        "primary": "#0f5238",
+                        "surface-container": "#ebefec",
+                        "on-tertiary-container": "#c4dbff",
+                        "surface-variant": "#dfe3e1",
+                        "on-background": "#181d1b",
+                        "primary-fixed": "#b1f0ce",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-surface-variant": "#404943",
+                        "inverse-primary": "#95d4b3",
+                        "surface-container-low": "#f1f5f2",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "on-tertiary-fixed": "#001c39",
+                        "secondary-fixed": "#a0f4c8",
+                        "on-error": "#ffffff",
+                        "secondary": "#0e6c4a",
+                        "surface": "#f6faf7",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#bfc9c1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "primary-container": "#2d6a4f",
+                        "background": "#f6faf7",
+                        "surface-tint": "#2c694e",
+                        "surface-container-high": "#e5e9e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "16px",
+                        "card-gap": "20px",
+                        "container-padding-desktop": "32px",
+                        "base": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "title-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Claymorphism Styles */
+        .clay-card {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.05),
+                inset -6px -6px 12px rgba(15, 82, 56, 0.08),
+                inset 6px 6px 12px rgba(255, 255, 255, 0.9);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .clay-card:active {
+            transform: scale(0.98);
+            box-shadow: 
+                4px 4px 8px rgba(0, 0, 0, 0.05),
+                inset -3px -3px 6px rgba(15, 82, 56, 0.08),
+                inset 3px 3px 6px rgba(255, 255, 255, 0.9);
+        }
+
+        .clay-pedestal {
+            background: #f1f5f2;
+            border-radius: 50%;
+            box-shadow: 
+                12px 12px 24px rgba(0, 0, 0, 0.04),
+                inset -8px -8px 16px rgba(15, 82, 56, 0.1),
+                inset 8px 8px 16px rgba(255, 255, 255, 1);
+            aspect-ratio: 1/1;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-sheet {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @keyframes pulse-violet {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+        }
+        .rarity-epic { animation: pulse-violet 2s infinite; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Top AppBar (JSON Mapping) -->
+<header class="flex justify-between items-center w-full px-container-padding-mobile h-16 sticky top-0 z-50 bg-white/60 dark:bg-black/60 backdrop-blur-xl border-b border-white/40 dark:border-white/10">
+<div class="flex items-center gap-4">
+<button class="md:hidden hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed tracking-tight">CAPDEX</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-primary dark:text-primary-fixed font-bold hover:opacity-80 transition-opacity" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:opacity-80 transition-opacity" href="#">Collection</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:opacity-80 transition-opacity" href="#">Map</a>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity">account_circle</button>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-container-padding-mobile md:px-container-padding-desktop py-8 pb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Side: Hero Image & Main Specimen Info -->
+<div class="lg:col-span-6 flex flex-col items-center">
+<div class="relative w-full max-w-md">
+<div class="clay-pedestal w-full flex items-center justify-center p-8 relative">
+<img class="w-full h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-500 z-10 rounded-3xl object-cover" data-alt="A high-resolution, vibrant 3D rendering of a Blue Jay bird with shimmering sapphire blue and crisp white feathers. The bird is perched elegantly, slightly popping out of the frame as if it were a physical collectible figurine. The background is a soft, out-of-focus natural forest scene with ethereal dappled light. The overall aesthetic is clean, scientific, and playful, matching a premium nature specimen kit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUe8L_8grzF-g3dDpk05rFziGpYcZxrYQRW4KHL81s2-XdNuxR_fMelso1CWGDuolIrJTP_S_BpGlHo2dGK5U93Rrsjf3HSjer1Rv3phtTuPhbSAtNlJZj4RgxgI-jLgap7dzkVlRvsF1Jl5lEEjuSRwhGVPD6URxll2K_k2MDWXMWtg6bskLgoapVdOBW97fdwPrLgzUDDC1eHYuk2FN8CR9ogvxB36zIa18vODklJ6UnSEhbpawwMzT3PyLy2Yzk79XCVFEj3BU"/>
+<!-- Rarity Badge -->
+<div class="absolute top-4 right-4 bg-violet-600 text-white px-4 py-1.5 rounded-full rarity-epic flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">EPIC</span>
+</div>
+</div>
+<!-- Identification Floating Card -->
+<div class="glass-sheet mt-[-40px] relative z-20 p-6 flex flex-col gap-2 mx-6 text-center">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Blue Jay</h1>
+<p class="text-on-surface-variant italic font-body-md">Cyanocitta cristata</p>
+<div class="flex justify-center items-center gap-1 mt-2 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="ml-2 font-bold text-on-surface">8.4 / 10</span>
+</div>
+</div>
+</div>
+<!-- Rating Bar (Thumb Zone Action) -->
+<div class="w-full max-w-md mt-10 p-6 clay-card">
+<h3 class="font-title-md text-title-md text-on-surface mb-4">Discovery Rating</h3>
+<div class="h-4 w-full bg-surface-container rounded-full overflow-hidden relative border border-white/20">
+<div class="absolute top-0 left-0 h-full bg-gradient-to-r from-secondary to-secondary-container w-[84%] rounded-full shadow-inner"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>Novice</span>
+<span>Expert Finder</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Data Sheets & Additional Info -->
+<div class="lg:col-span-6 flex flex-col gap-8">
+<section>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6">Specimen Data</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Data Sheet 1 -->
+<div class="glass-sheet p-5 flex items-start gap-4 hover:translate-y-[-4px] transition-transform cursor-default">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+<span class="material-symbols-outlined">forest</span>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase">Habitat</h4>
+<p class="text-on-surface font-body-md mt-1">Mixed woodlands, parks, and suburban gardens across Eastern NA.</p>
+</div>
+</div>
+<!-- Data Sheet 2 -->
+<div class="glass-sheet p-5 flex items-start gap-4 hover:translate-y-[-4px] transition-transform cursor-default">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase">Diet</h4>
+<p class="text-on-surface font-body-md mt-1">Omnivorous; eats nuts, seeds, fruits, insects, and occasionally small vertebrates.</p>
+</div>
+</div>
+<!-- Data Sheet 3 -->
+<div class="glass-sheet p-5 flex items-start gap-4 hover:translate-y-[-4px] transition-transform cursor-default md:col-span-2">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed-variant shrink-0">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-tertiary uppercase">Where to Find</h4>
+<p class="text-on-surface font-body-md mt-1">Frequently seen at bird feeders during winter months. Look for flashes of blue high in oak or beech trees during the spring migration season.</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Similar Species</h2>
+<button class="text-secondary font-bold font-label-sm text-label-sm uppercase hover:opacity-80">View Dex</button>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4">
+<!-- Similar 1 -->
+<div class="clay-card min-w-[160px] p-4 flex flex-col items-center gap-3">
+<div class="w-24 h-24 rounded-full bg-surface-container overflow-hidden p-2">
+<img class="w-full h-full rounded-3xl object-cover" data-alt="A close up detailed portrait of a Steller's Jay with dark charcoal crest and vibrant cobalt blue wings. Professional specimen photography style, neutral soft background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoxFOPytIMwiugTIQX_PxdpSB8uJlBwE7Yxsrsv3EdXEDTb24oaO5mjso3mxkAaq5XA1zURzQn85GhejqXMv3yPXTVFHasF9UNv5FhyzIVEyof8IeijUQgTfHh9MZq7gRfOP43fr5C7EbU5RCsNxUMRZzTGE11xyyqZxBQH2-3glafeKZi0A81UNYoaS8TrHM6vuE3MyTtINX0YjYSHr1UMokHSUASdd-Lk1OvvVDrRQDT7F8YvGb2NPcTYD67FyFXAmXFYAucHm8"/>
+</div>
+<div class="text-center">
+<p class="font-title-md text-[14px] text-on-surface leading-tight">Steller's Jay</p>
+<p class="text-[10px] text-on-surface-variant uppercase mt-1">Rare</p>
+</div>
+</div>
+<!-- Similar 2 -->
+<div class="clay-card min-w-[160px] p-4 flex flex-col items-center gap-3">
+<div class="w-24 h-24 rounded-full bg-surface-container overflow-hidden p-2">
+<img class="w-full h-full rounded-3xl object-cover" data-alt="Scientific illustration of a Western Scrub-Jay. Soft blue and grey tones, crisp detail on feathers. Light mode aesthetic, studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO5_lzvYuTxoOkdzro6Jwd_OhL63nmEcgpyIY2XRjkrwMYmFK33gUOjpcJsxlFL9kV5YVo_oO_3RRWL4lTQUh-uEhM2hnfChqosr5qL6yKaAn_RUMjspuaHUZnR_TWZ7XPhzp5MSv1FsrYWoLgMvxAJsLDc1Ao_HuJwC0ME7H8a9TikCnWBxT9eXJa4J-dbxRsimJfjUK8rW1QIKTadsiei-bHSIqdCLxEu8pPDG18DlF90p61k3WEdktGWYd8ZiD_r9jng4DV3sA"/>
+</div>
+<div class="text-center">
+<p class="font-title-md text-[14px] text-on-surface leading-tight">Scrub-Jay</p>
+<p class="text-[10px] text-on-surface-variant uppercase mt-1">Common</p>
+</div>
+</div>
+<!-- Similar 3 -->
+<div class="clay-card min-w-[160px] p-4 flex flex-col items-center gap-3">
+<div class="w-24 h-24 rounded-full bg-surface-container overflow-hidden p-2">
+<img class="w-full h-full rounded-3xl object-cover" data-alt="Macro photography of a Florida Scrub-Jay in a natural habitat. Bright, clean light, high detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIyqBQr_-baVeeg7KnnB-hMpDcYpWLhTFtZCC2rmgjaV26Lu_gbAfMBHwiIZnXd_HPf9M4VF2J9WJ3Mip2JU4dL8zhuCdXuVTemSybtVvEcqLrSHEsUW06eNYC_RjNaWOpesbrv3WeJPqpCRK-GzoydcRfarbIOFX1z8JDNdVIKMkupgVVgg8aoe_lcCwvSTum4b1XvI4OR6ISIV770SmZMXZ7HMxmUz5L0PPM7PEXU9GXVKgM6qh31BvDFdcBDDjXUdl5tQ1YepQ"/>
+</div>
+<div class="text-center">
+<p class="font-title-md text-[14px] text-on-surface leading-tight">Florida Jay</p>
+<p class="text-[10px] text-on-surface-variant uppercase mt-1">Epic</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<div class="flex gap-4 mt-4">
+<button class="flex-1 bg-secondary text-white py-4 rounded-full font-bold shadow-lg clay-card hover:bg-secondary/90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                        Add to Collection
+                    </button>
+<button class="w-16 h-16 glass-sheet flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Navigation (JSON Mapping - Desktop Only) -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant shadow-sm py-8 px-4 gap-4 z-[60]">
+<div class="flex flex-col gap-1 mb-6">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">CAPDEX</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Nature Specimen Kit</span>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl font-body-md" href="#">
+<span class="material-symbols-outlined">explore</span> Explore
+            </a>
+<a class="flex items-center gap-3 p-3 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-xl font-bold font-body-md" href="#">
+<span class="material-symbols-outlined">database</span> Collection
+            </a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl font-body-md" href="#">
+<span class="material-symbols-outlined">center_focus_weak</span> Identify
+            </a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl font-body-md" href="#">
+<span class="material-symbols-outlined">leaderboard</span> Rankings
+            </a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl font-body-md" href="#">
+<span class="material-symbols-outlined">map</span> Map
+            </a>
+</nav>
+<button class="mt-4 bg-secondary text-white p-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add_a_photo</span> New Scan
+        </button>
+<div class="mt-auto flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl font-body-md" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl font-body-md" href="#">
+<span class="material-symbols-outlined">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Bottom Navigation Bar (JSON Mapping - Mobile Only) -->
+<nav class="fixed bottom-6 left-4 right-4 z-50 flex justify-around items-center px-4 bg-white/60 dark:bg-black/60 backdrop-blur-2xl border border-white/40 dark:border-white/10 rounded-full h-20 lg:hidden shadow-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full w-12 h-12 shadow-inner active:scale-90 duration-150">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm hidden">Dex</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="font-label-sm text-label-sm">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-label-sm">Rank</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for specimen card hover
+        document.querySelectorAll('.clay-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body></html>

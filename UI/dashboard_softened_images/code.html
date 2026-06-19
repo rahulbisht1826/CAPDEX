@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAPDEX - Nature Specimen Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#0060ad",
+                    "surface-bright": "#f6faf7",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eef2ef",
+                    "inverse-surface": "#2d3130",
+                    "on-surface": "#181d1b",
+                    "surface-container-highest": "#dfe3e1",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#004883",
+                    "on-primary-fixed": "#002114",
+                    "secondary-container": "#a0f4c8",
+                    "tertiary-fixed-dim": "#a4c9ff",
+                    "surface-dim": "#d7dbd8",
+                    "outline": "#707973",
+                    "on-secondary-fixed": "#002113",
+                    "on-secondary-container": "#19724f",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#a8e7c5",
+                    "tertiary": "#004884",
+                    "primary": "#0f5238",
+                    "surface-container": "#ebefec",
+                    "on-tertiary-container": "#c4dbff",
+                    "surface-variant": "#dfe3e1",
+                    "on-background": "#181d1b",
+                    "primary-fixed": "#b1f0ce",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#d4e3ff",
+                    "on-surface-variant": "#404943",
+                    "inverse-primary": "#95d4b3",
+                    "surface-container-low": "#f1f5f2",
+                    "secondary-fixed-dim": "#85d7ad",
+                    "on-tertiary-fixed": "#001c39",
+                    "secondary-fixed": "#a0f4c8",
+                    "on-error": "#ffffff",
+                    "secondary": "#0e6c4a",
+                    "surface": "#f6faf7",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#bfc9c1",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "primary-container": "#2d6a4f",
+                    "background": "#f6faf7",
+                    "surface-tint": "#2c694e",
+                    "surface-container-high": "#e5e9e6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "16px",
+                    "card-gap": "20px",
+                    "container-padding-desktop": "32px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .clay-card {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 
+                20px 20px 60px #d1d5d2,
+                -20px -20px 60px #ffffff,
+                inset 4px 4px 10px rgba(255,255,255,0.8),
+                inset -4px -4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .clay-card:active {
+            transform: scale(0.98);
+            box-shadow: 
+                10px 10px 30px #d1d5d2,
+                -10px -10px 30px #ffffff,
+                inset 8px 8px 15px rgba(0,0,0,0.05);
+        }
+
+        .clay-inset {
+            background: #f1f5f2;
+            box-shadow: 
+                inset 6px 6px 12px #d1d5d2, 
+                inset -6px -6px 12px #ffffff;
+            border-radius: 20px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .rarity-common { background: #94a3b8; }
+        .rarity-rare { background: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        .rarity-epic { 
+            background: #8b5cf6; 
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- Top App Bar (Mobile Only Style Command) -->
+<header class="flex justify-between items-center w-full px-container-padding-mobile h-16 sticky top-0 z-50 bg-white/60 backdrop-blur-xl border-b border-white/40 lg:px-container-padding-desktop">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">CAPDEX</div>
+<div class="flex items-center gap-4">
+<div class="clay-inset px-4 py-2 flex items-center gap-2 hidden md:flex">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-sm font-label-sm" placeholder="Search specimens..." type="text"/>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex max-w-[1440px] mx-auto">
+<!-- Side Navigation (Web) -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-surface-container-low border-r border-outline-variant py-8 px-4 gap-4 z-40">
+<div class="mb-6 px-2">
+<div class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">CAPDEX</div>
+<p class="text-label-sm font-label-sm text-outline">Nature Specimen Kit</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-title-md text-title-md">Explore</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">database</span>
+<span class="font-body-md text-body-md">Collection</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">center_focus_weak</span>
+<span class="font-body-md text-body-md">Identify</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-body-md text-body-md">Rankings</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-body-md text-body-md">Map</span>
+</a>
+</nav>
+<button class="mt-4 p-4 rounded-2xl bg-secondary text-on-secondary font-bold shadow-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add_a_photo</span>
+                New Scan
+            </button>
+<div class="mt-auto flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-container-padding-mobile lg:p-container-padding-desktop pb-32">
+<!-- Dashboard Hero: Recent Scan Claymorphic Card -->
+<section class="mb-10">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Discovery Dashboard</h2>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Hero Card -->
+<div class="lg:col-span-8 clay-card p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-6">
+<span class="px-4 py-1.5 rounded-full text-white text-xs font-bold rarity-epic uppercase tracking-widest">Epic Finding</span>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+<div class="w-48 h-48 md:w-64 md:h-64 relative">
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors"></div>
+<img class="w-full h-full object-cover rounded-3xl relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-500" data-alt="A macro studio photograph of a rare vibrant blue tropical butterfly with iridescent wings, isolated against a soft white clay-textured background with gentle shadows. The lighting is soft and cinematic, making the specimen appear as if it is popping out of the frame in a physical nature kit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs_QPj8xAM5pAUosxYmgZKwrRDOpx0zZrJ0ITwlDpXr-55JgAHc-oe1xBlUqcHnP-LqbWlRjg_VfNvSU-ycxiojfaT_QTeqTo_Y_tW_QhndvNtfYZrGBWLZMC5UtmD4YTQinHAlw4aXuRmiP7M3MzZ2nBGYiAG63BgZkcWRo8lKELLJxvBlvxqIluRKGSldx_bQPI6Qi7feJwSG7hJyRTf2btrwaPfJbwmnDHmTfH7nHATQot1LxdUnquA-2FukBdyyAZO_ejHwkU"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-display-lg text-display-lg text-on-surface mb-2">Morpho Menelaus</h3>
+<p class="text-secondary font-semibold mb-4">Blue Morpho Butterfly</p>
+<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+<div class="glass-panel px-4 py-2 rounded-2xl flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-outline uppercase">Found</span>
+<span class="font-title-md text-title-md text-on-surface">Amazonia</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-2xl flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-outline uppercase">Size</span>
+<span class="font-title-md text-title-md text-on-surface">15cm</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-2xl flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-outline uppercase">Scanned</span>
+<span class="font-title-md text-title-md text-on-surface">2h ago</span>
+</div>
+</div>
+<button class="mt-8 px-8 py-3 bg-secondary text-on-secondary rounded-full font-bold shadow-md active:scale-95 transition-transform flex items-center gap-2">
+                                    View Details <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats Stack -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="clay-card p-6 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-2" style="font-variation-settings: 'FILL' 1;">dataset</span>
+<span class="font-display-lg text-display-lg text-on-surface">1,248</span>
+<p class="font-label-sm text-label-sm text-outline uppercase">Total Scanned</p>
+</div>
+<div class="clay-card p-6 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-secondary mb-2" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-display-lg text-display-lg text-on-surface">8,420</span>
+<p class="font-label-sm text-label-sm text-outline uppercase">Rarity Score</p>
+</div>
+<div class="clay-card p-6 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-2" style="font-variation-settings: 'FILL' 1;">public</span>
+<span class="font-display-lg text-display-lg text-on-surface">#42</span>
+<p class="font-label-sm text-label-sm text-outline uppercase">World Ranking</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Toggles (Asymmetric Layout) -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Explore Categories</h2>
+<p class="text-body-md text-outline">Continue your journey across the biomes.</p>
+</div>
+<button class="text-secondary font-bold hover:underline flex items-center gap-1">
+                        See All <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Category: Plants -->
+<div class="glass-panel p-6 rounded-[40px] flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+<div class="w-20 h-20 bg-secondary-container rounded-3xl mb-4 flex items-center justify-center shadow-inner group-hover:bg-primary group-hover:text-white transition-colors overflow-hidden">
+<span class="material-symbols-outlined text-3xl">potted_plant</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface">Plants</h4>
+<p class="text-label-sm text-outline">482 Found</p>
+</div>
+<!-- Category: Animals -->
+<div class="glass-panel p-6 rounded-[40px] flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+<div class="w-20 h-20 bg-primary-fixed rounded-3xl mb-4 flex items-center justify-center shadow-inner group-hover:bg-primary group-hover:text-white transition-colors overflow-hidden">
+<span class="material-symbols-outlined text-3xl">pets</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface">Animals</h4>
+<p class="text-label-sm text-outline">156 Found</p>
+</div>
+<!-- Category: Birds -->
+<div class="glass-panel p-6 rounded-[40px] flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+<div class="w-20 h-20 bg-tertiary-fixed rounded-3xl mb-4 flex items-center justify-center shadow-inner group-hover:bg-tertiary group-hover:text-white transition-colors overflow-hidden">
+<span class="material-symbols-outlined text-3xl">flutter_dash</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface">Birds</h4>
+<p class="text-label-sm text-outline">89 Found</p>
+</div>
+<!-- Category: Insects -->
+<div class="glass-panel p-6 rounded-[40px] flex flex-col items-center text-center group cursor-pointer hover:-translate-y-2 transition-transform">
+<div class="w-20 h-20 bg-secondary-fixed-dim rounded-3xl mb-4 flex items-center justify-center shadow-inner group-hover:bg-secondary group-hover:text-white transition-colors overflow-hidden">
+<span class="material-symbols-outlined text-3xl">bug_report</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface">Insects</h4>
+<p class="text-label-sm text-outline">521 Found</p>
+</div>
+</div>
+</section>
+<!-- Map Glimpse (Contextual Map Interaction) -->
+<section class="mb-10">
+<div class="clay-card h-64 overflow-hidden relative">
+<div class="absolute inset-0 z-0 bg-surface-container-highest">
+<!-- Custom Map Placeholder with Data-Location -->
+<div class="w-full h-full bg-cover bg-center opacity-60" data-alt="A stylized minimalist digital map illustration of the Amazon rainforest canopy from a satellite view. The map features organic green and teal shapes representing dense jungle, with soft white paths winding through. Subtle glowing hotspots indicate where rare specimens have been discovered, creating a gamified explorer aesthetic." data-location="Amazon Rainforest" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmiK99DiWi_JARtEN0P_sdf82rQYOFx84UI-pyN0_U9PKslo3O3jEBmc577C81h7kGHIGsvK4IHNR-wJgVF6YHIML4TkMb1fSlTPqql6vTWO_F58kQsX4BSZd46XcvpYCFg8LJSZ9b_yH1aHD09eYKCCzkYj0h9RXlwx9tX2moPoCWCgwiP688vi0rRo4wsU6KfjAbvg8Io98CnNfF6UNBV8a4MwqZIkgtgld9GrXzSvHcAT-_GWE6b38L6kBqkZkPUe7w4UQC5Ck')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent flex items-end p-8 z-10">
+<div class="flex justify-between items-center w-full">
+<div>
+<h3 class="font-title-md text-title-md text-primary">Discoveries Near You</h3>
+<p class="text-body-md text-on-surface-variant">4 Rare specimens spotted in your current biome.</p>
+</div>
+<button class="clay-card px-6 py-2 bg-white flex items-center gap-2 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary">explore</span>
+<span class="font-bold text-primary">Open Map</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-6 left-4 right-4 z-50 flex justify-around items-center px-4 bg-white/60 backdrop-blur-2xl border border-white/40 shadow-xl rounded-full h-20 lg:hidden">
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<div class="bg-secondary-container text-on-secondary-container rounded-full w-12 h-12 flex items-center justify-center shadow-inner scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm">Dex</span>
+</a>
+<!-- FAB Scan Button -->
+<div class="relative -top-6">
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-2xl flex items-center justify-center transition-transform active:scale-90 hover:scale-105">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-label-sm">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for clay-cards
+        document.querySelectorAll('.clay-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Handle Active State in SideNav
+        const navLinks = document.querySelectorAll('aside nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => {
+                    l.className = "flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors";
+                    l.querySelector('span:first-child').style.fontVariationSettings = "'FILL' 0";
+                });
+                link.className = "flex items-center gap-3 p-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold translate-x-1 transition-transform";
+                link.querySelector('span:first-child').style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+    </script>
+</body></html>

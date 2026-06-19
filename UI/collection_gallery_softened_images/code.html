@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAPDEX - Collection Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#0060ad",
+                    "surface-bright": "#f6faf7",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eef2ef",
+                    "inverse-surface": "#2d3130",
+                    "on-surface": "#181d1b",
+                    "surface-container-highest": "#dfe3e1",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#004883",
+                    "on-primary-fixed": "#002114",
+                    "secondary-container": "#a0f4c8",
+                    "tertiary-fixed-dim": "#a4c9ff",
+                    "surface-dim": "#d7dbd8",
+                    "outline": "#707973",
+                    "on-secondary-fixed": "#002113",
+                    "on-secondary-container": "#19724f",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#a8e7c5",
+                    "tertiary": "#004884",
+                    "primary": "#0f5238",
+                    "surface-container": "#ebefec",
+                    "on-tertiary-container": "#c4dbff",
+                    "surface-variant": "#dfe3e1",
+                    "on-background": "#181d1b",
+                    "primary-fixed": "#b1f0ce",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#d4e3ff",
+                    "on-surface-variant": "#404943",
+                    "inverse-primary": "#95d4b3",
+                    "surface-container-low": "#f1f5f2",
+                    "secondary-fixed-dim": "#85d7ad",
+                    "on-tertiary-fixed": "#001c39",
+                    "secondary-fixed": "#a0f4c8",
+                    "on-error": "#ffffff",
+                    "secondary": "#0e6c4a",
+                    "surface": "#f6faf7",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#bfc9c1",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "primary-container": "#2d6a4f",
+                    "background": "#f6faf7",
+                    "surface-tint": "#2c694e",
+                    "surface-container-high": "#e5e9e6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "16px",
+                    "card-gap": "20px",
+                    "container-padding-desktop": "32px",
+                    "base": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .clay-card {
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 
+                8px 8px 16px #d1d9e6, 
+                -8px -8px 16px #ffffff,
+                inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+                inset -2px -2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .clay-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 
+                12px 12px 24px #d1d9e6, 
+                -12px -12px 24px #ffffff;
+        }
+        .clay-button {
+            box-shadow: 
+                4px 4px 8px rgba(0, 0, 0, 0.1), 
+                -4px -4px 8px rgba(255, 255, 255, 0.9),
+                inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        .clay-button:active {
+            box-shadow: 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+            transform: scale(0.98);
+        }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .rarity-epic { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
+        .rarity-rare { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
+        .rarity-common { background: linear-gradient(135deg, #64748b, #334155); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation (Shared Component Integration) -->
+<header class="flex justify-between items-center w-full px-container-padding-mobile md:px-container-padding-desktop h-16 sticky top-0 z-50 bg-white/60 dark:bg-black/60 backdrop-blur-xl border-b border-white/40 dark:border-white/10">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed tracking-tight">CAPDEX</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm hover:opacity-80 transition-opacity" href="#">Explore</a>
+<a class="text-primary dark:text-primary-fixed font-bold font-label-sm text-label-sm hover:opacity-80 transition-opacity" href="#">Collection</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm hover:opacity-80 transition-opacity" href="#">Identify</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-label-sm text-label-sm hover:opacity-80 transition-opacity" href="#">Rankings</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80">search</button>
+<button class="material-symbols-outlined text-primary hover:opacity-80">account_circle</button>
+</div>
+</header>
+<!-- Sidebar for Desktop -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant shadow-sm py-8 px-4 gap-4 z-40">
+<div class="mb-8">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">CAPDEX</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Nature Specimen Kit</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span>Explore</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined">database</span>
+<span>Collection</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">center_focus_weak</span>
+<span>Identify</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Rankings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span>Map</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2">
+<button class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary rounded-full clay-button font-bold justify-center mb-4">
+<span class="material-symbols-outlined">add_circle</span>
+<span>New Scan</span>
+</button>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-64 px-container-padding-mobile md:px-container-padding-desktop py-8">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Collection Gallery</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">42 specimens discovered this season.</p>
+</div>
+<div class="flex flex-wrap gap-3 glass-overlay p-4 rounded-3xl clay-button">
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface">
+<span>All Types</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface">
+<span>Rarity</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface">
+<span>Sort: Newest</span>
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento Grid for Specimens -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+<!-- Specimen Card 1: Epic -->
+<div class="clay-card relative group flex flex-col p-6 h-[420px] cursor-pointer">
+<div class="absolute top-4 right-4 rarity-epic px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase shadow-lg">Epic</div>
+<div class="flex-1 flex items-center justify-center relative">
+<img class="w-full h-full transform group-hover:scale-110 transition-transform duration-500 z-10 rounded-3xl" data-alt="A hyper-realistic studio macro shot of a rare orchid with iridescent petals, glowing with bioluminescence. The specimen is centered in a high-key lighting setup with a clean, soft mint-green background. The aesthetic is clean, botanical, and premium, following the CAPDEX digital specimen kit style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlMP4YOPQ8twUbiMtPjrXjiTKvLJlFmRjmdPFZLa3V8aVcS-7Bne2UAC6tJl00_2eI7QQ8_3hb38tnyOPGLmyfdhgC4ubjF-vAkhF061ht1w_UgozIQcYsDAMEV4CVDuj45hT0naprInvQQRy_VHSB06qjBNmrNt9gZw2XoCz1NEZ2T9gdTJetszNfXkf1kcH4nMvBRYwv37zXKWdB0k5MdlrBWuGkyLh4WAS85ZefmwNAFtzLqkHDxZfymzWLyVdMtJ9SGQxcWiE"/>
+<div class="absolute inset-0 bg-secondary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="glass-overlay rounded-2xl p-4 mt-4 relative z-20">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-primary truncate">Aurelian Orchid</h3>
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">9.8</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Lumina Flora</p>
+</div>
+</div>
+<!-- Specimen Card 2: Rare -->
+<div class="clay-card relative group flex flex-col p-6 h-[420px] cursor-pointer">
+<div class="absolute top-4 right-4 rarity-rare px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase shadow-lg">Rare</div>
+<div class="flex-1 flex items-center justify-center relative">
+<img class="w-full h-full transform group-hover:scale-110 transition-transform duration-500 z-10 rounded-3xl" data-alt="A clean, scientific macro photograph of a vibrant blue morpho butterfly resting on a mossy stone. The background is a soft, out-of-focus forest floor in shades of muted green and charcoal. The lighting is diffused and natural, highlighting the metallic sheen of the wings. The image matches the adventurous and tactile CAPDEX brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwZvfg4m1cJPI8D41SNpll0BJ77sFyP4LTEtW2-7n6At6BCuP_VCbIEEyib4efXeCio5ECvgm6Xub2u5CK2fBHw7e9k-7obH6VszG_XnhKNv_zqyf1Pj5UBIJep1Hnl48fhsaF5Ye8rBkFehz6483bNRTOQ6-czbfVIB-fc8Pe7RRamwfdWbK3ifnVmUVsApQsVwBQDZ_SMlSX_y1gqjWej-al3cfDT8-vp8tlZCkefMoaaI0NlBioSd5WiR9mpEzs_FrGgY3h35k"/>
+</div>
+<div class="glass-overlay rounded-2xl p-4 mt-4 relative z-20">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-primary truncate">Cobalt Morpho</h3>
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">8.4</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Lepidoptera</p>
+</div>
+</div>
+<!-- Specimen Card 3: Common -->
+<div class="clay-card relative group flex flex-col p-6 h-[420px] cursor-pointer">
+<div class="absolute top-4 right-4 rarity-common px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase shadow-lg">Common</div>
+<div class="flex-1 flex items-center justify-center relative">
+<img class="w-full h-full transform group-hover:scale-110 transition-transform duration-500 z-10 rounded-3xl" data-alt="A minimal and modern botanical illustration style photo of a succulent plant in a textured white ceramic pot. The lighting is high-key and bright, evoking a fresh morning atmosphere. The color palette is dominated by soft greens and neutral whites, perfectly aligned with the Claymorphism UI style of CAPDEX." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD_tHX6rRue5PkkVAjj6S1dA91cupCC6BRhw9nFtvftOAAN_SOJMQi-JPR2oqEkzk1G3aeWT0qoTahncHQr9CQ_owQTppr-mXtKsCLKcWCdk5KvdipMjvMYF-ptu6GSTVxUmEtXy6c8shPsB8730sTtOwxv1yfXhweU4OHUHKB3S8wni5_WkJzxrrk67VbsXz0jGYVwqa45kKqrRDkoUW3G9LRA5IkIoB_uYoStCB74z16QKiJi8sP3wwvk-5r1bSfJxOdARgyns0"/>
+</div>
+<div class="glass-overlay rounded-2xl p-4 mt-4 relative z-20">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-primary truncate">Silver Jade</h3>
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">4.2</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Succulentae</p>
+</div>
+</div>
+<!-- Specimen Card 4: Rare -->
+<div class="clay-card relative group flex flex-col p-6 h-[420px] cursor-pointer">
+<div class="absolute top-4 right-4 rarity-rare px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase shadow-lg">Rare</div>
+<div class="flex-1 flex items-center justify-center relative">
+<img class="w-full h-full transform group-hover:scale-110 transition-transform duration-500 z-10 rounded-3xl" data-alt="A detailed closeup of a geometric crystalline formation found in nature, glowing with a soft internal azure light. The specimen is set against a dark, velvety texture that makes the blue hues pop. The lighting emphasizes the sharp angles and translucence of the crystal, creating a sophisticated digital specimen kit feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiFBmzmmtpwsKMQyP7RbGunsDVfSQWaMqctVSrx9bDsnn_GPPuc52WwSqtYZTbEdw5r1BVZm4wvEz67xsjet-9SyrcYJdgJyQCg7CMPc8FJML6yzcfJaFDteXi--R6db3ynq4hdtpx69pzsp9v4u1XeKSTM7KPmN2FPX8z1Pzxd2OXRatlrjDNy4JWTGWRZl12hDCt1SVfDWumC21A9-4gg2FPAHy-0JgiDW2rsf04-QJe-rHzSAp7sgpY7I04GHayU5VFAHL_Uts"/>
+</div>
+<div class="glass-overlay rounded-2xl p-4 mt-4 relative z-20">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-primary truncate">Azure Quartz</h3>
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">7.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Geological</p>
+</div>
+</div>
+<!-- Repeat for Grid Density -->
+<div class="clay-card relative group flex flex-col p-6 h-[420px] cursor-pointer">
+<div class="absolute top-4 right-4 rarity-common px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase shadow-lg">Common</div>
+<div class="flex-1 flex items-center justify-center relative">
+<img class="w-full h-full transform group-hover:scale-110 transition-transform duration-500 z-10 rounded-3xl" data-alt="A professional macro shot of a green fern leaf showing intricate patterns and spores on its underside. The lighting is soft side-light that reveals the three-dimensional texture of the plant. The overall aesthetic is calm, scientific, and clean, fitting into a modern naturalist app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD39dhx3-OvuzvQnAomxWoC7J2R6-5Qx7pNiJpq0BztcaoNE1BzDII440ovxiadj3f71NiW5Auq9d1Mw_Bo7LlRb4mq10rZnEuRW6dm_hzfP_hGc13ZJVNjr66E_Csu1TdZbQu7v0qGHQbQaBklBfswP-8iMI6wamSiDbgEp5tF_aU4koyYWcWeAJ2Dv7gRekqJPtrDF1vHZDeDXnju2uGY39PKS635yVK4X_UDpsUkTwjFK1OyXrf5TDa5LEhyWkx5Ity308HdS5c"/>
+</div>
+<div class="glass-overlay rounded-2xl p-4 mt-4 relative z-20">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-primary truncate">Forest Fern</h3>
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">5.5</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Pteridophyta</p>
+</div>
+</div>
+<div class="clay-card relative group flex flex-col p-6 h-[420px] cursor-pointer">
+<div class="absolute top-4 right-4 rarity-epic px-3 py-1 rounded-full text-white text-[10px] font-bold tracking-widest uppercase shadow-lg">Epic</div>
+<div class="flex-1 flex items-center justify-center relative">
+<img class="w-full h-full transform group-hover:scale-110 transition-transform duration-500 z-10 rounded-3xl" data-alt="A stunning closeup of a red panda peeking through bright autumn leaves. The image is crisp with a shallow depth of field, putting all focus on the curious eyes and fluffy ears of the creature. The lighting is warm and golden-hour inspired, giving a playful and collectible game vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaLHsG7-t-NND0g21scxRuyZdegmwREl-2W7iV9wgAE35p2nWy_DlHb6Lecl5hPQ-8Xr4Cl7I5KbF8QBAugcB_0vfb_okQiYmRopQyJGG4COIJo3PKLH-4Y07KesUpWmgRxl1P9xU_8ae8wdOz7zFexx4VqYCLOEmTaKGRXUzJP3Xaso6K3Ooe-2jc3mDYUouagwX0h2B9dtJGeOJLswEYxABg-i74-cwvpB1dMYRr-qteTEU6Sp5F-nGNb-qKZw2N4zB8ndleryw"/>
+</div>
+<div class="glass-overlay rounded-2xl p-4 mt-4 relative z-20">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-md text-title-md text-primary truncate">Ember Paws</h3>
+<div class="flex items-center gap-1 bg-secondary-container px-2 py-0.5 rounded text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">9.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Mammalia</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="fixed bottom-6 left-4 right-4 z-50 flex justify-around items-center px-4 bg-white/60 dark:bg-black/60 backdrop-blur-2xl border border-white/40 dark:border-white/10 shadow-xl rounded-full h-20 lg:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full w-12 h-12 shadow-inner scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</a>
+<div class="relative -top-6">
+<button class="bg-primary text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-2xl clay-button">
+<span class="material-symbols-outlined !text-[32px]">photo_camera</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-label-sm">Rank</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-label-sm">Map</span>
+</a>
+</nav>
+<!-- Atmospheric Effect (Background Decoration) -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-20">
+<div class="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-secondary-fixed blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[20%] left-[-10%] w-[400px] h-[400px] bg-primary-fixed blur-[100px] rounded-full"></div>
+</div>
+<script>
+        // Micro-interactions for specimen cards
+        document.querySelectorAll('.clay-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.96)';
+                card.style.boxShadow = 'inset 4px 4px 10px rgba(0,0,0,0.1)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1.02)';
+                card.style.boxShadow = '12px 12px 24px #d1d9e6, -12px -12px 24px #ffffff';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = '8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff';
+            });
+        });
+
+        // Hover animation for FAB
+        const fab = document.querySelector('.clay-button');
+        if(fab) {
+            fab.addEventListener('mouseenter', () => {
+                fab.querySelector('span').classList.add('rotate-12');
+            });
+            fab.addEventListener('mouseleave', () => {
+                fab.querySelector('span').classList.remove('rotate-12');
+            });
+        }
+    </script>
+</body></html>

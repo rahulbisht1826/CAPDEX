@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAPDEX - Collection Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#a0f4c8",
+                    "primary-fixed": "#b1f0ce",
+                    "outline": "#707973",
+                    "on-primary-fixed": "#002114",
+                    "inverse-surface": "#2d3130",
+                    "tertiary-fixed": "#d4e3ff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-dim": "#d7dbd8",
+                    "tertiary": "#004884",
+                    "secondary": "#0e6c4a",
+                    "secondary-fixed-dim": "#85d7ad",
+                    "primary-container": "#2d6a4f",
+                    "surface-container": "#ebefec",
+                    "secondary-container": "#a0f4c8",
+                    "on-tertiary-fixed-variant": "#004883",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#181d1b",
+                    "on-primary-container": "#a8e7c5",
+                    "inverse-primary": "#95d4b3",
+                    "surface": "#f6faf7",
+                    "surface-container-high": "#e5e9e6",
+                    "on-tertiary-fixed": "#001c39",
+                    "on-tertiary-container": "#c4dbff",
+                    "background": "#f6faf7",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#404943",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002113",
+                    "tertiary-fixed-dim": "#a4c9ff",
+                    "surface-bright": "#f6faf7",
+                    "surface-variant": "#dfe3e1",
+                    "surface-container-low": "#f1f5f2",
+                    "inverse-on-surface": "#eef2ef",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#181d1b",
+                    "error": "#ba1a1a",
+                    "primary": "#0f5238",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#2c694e",
+                    "on-secondary-container": "#19724f",
+                    "tertiary-container": "#0060ad",
+                    "surface-container-highest": "#dfe3e1",
+                    "outline-variant": "#bfc9c1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-desktop": "32px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "16px",
+                    "card-gap": "20px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .clay-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 
+                8px 8px 16px rgba(0, 0, 0, 0.05),
+                inset -8px -8px 12px rgba(116, 198, 157, 0.1),
+                inset 4px 4px 8px rgba(255, 255, 255, 0.8);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .clay-card:active {
+            transform: scale(0.96);
+            box-shadow: 
+                4px 4px 8px rgba(0, 0, 0, 0.05),
+                inset -4px -4px 6px rgba(116, 198, 157, 0.1),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+        .recessed-input {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.05), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            filter: drop-shadow(0 0 8px rgba(15, 82, 56, 0.4));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-white/60 backdrop-blur-xl border-b border-white/40 sticky top-0 z-50 flex justify-between items-center w-full px-container-padding-mobile h-16">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">CAPDEX</h1>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hover:opacity-80 transition-opacity active:scale-95 text-primary">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<main class="pb-32 pt-4 px-container-padding-mobile">
+<!-- Filter Section -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-title-md text-title-md text-on-surface">Your Collection</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">124 / 500</span>
+</div>
+<!-- Type Filters -->
+<div class="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 no-scrollbar">
+<button class="flex-shrink-0 bg-primary-container text-on-primary-container font-label-sm text-label-sm px-4 py-2 rounded-full shadow-sm">All Types</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full hover:bg-surface-variant transition-colors">Flora</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full hover:bg-surface-variant transition-colors">Insects</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full hover:bg-surface-variant transition-colors">Minerals</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full hover:bg-surface-variant transition-colors">Fungi</button>
+</div>
+<!-- Rarity Filter Recessed -->
+<div class="mt-4 recessed-input bg-surface-container-low rounded-2xl p-2 flex gap-2">
+<button class="flex-1 py-1.5 rounded-xl font-label-sm text-label-sm text-primary font-bold bg-white shadow-sm">Recent</button>
+<button class="flex-1 py-1.5 rounded-xl font-label-sm text-label-sm text-on-surface-variant">Rarity</button>
+<button class="flex-1 py-1.5 rounded-xl font-label-sm text-label-sm text-on-surface-variant">Name</button>
+</div>
+</section>
+<!-- Specimen Grid -->
+<section class="grid grid-cols-2 gap-card-gap">
+<!-- Specimen Card 1: Common -->
+<div class="clay-card p-3 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-1">
+<img class="w-full h-full object-cover" data-alt="A hyper-realistic macro photograph of a common green forest leaf with intricate vein patterns, resting on a soft clay-like white surface. The lighting is bright and airy, reflecting a clean digital specimen kit aesthetic. Subtle shadows give a 3D depth to the leaf against its pristine background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-w0a3ZiCpOSWFCEBwx7ZbwNf-hZr_bIknTixQDz2KzcBHfitpNKpEVM4F0P1YIBrFTTJAzJLrH4U2PaMaflOKhmGkNTZSwOZtVL2PLZDoq3RXo4ertv0PlqFrL8B7yk2J-Bvz59kLtxrIYNUGeXgbcQA9AfoXc10jlm6A3QmMaooGcl1Z95W_am9aQrgFGK9ENEvNg7LfWBjXVI7zfXOF1fqaqXsABRviBDXJUDx5eav9knGVO3wivSBm4WYF9XSjBb0_g_g01pI"/>
+<div class="absolute top-2 right-2 bg-slate-500 text-white font-label-sm text-[10px] px-2 py-0.5 rounded-full uppercase">Common</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight truncate">Forest Fern</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4.2</span>
+</div>
+</div>
+</div>
+<!-- Specimen Card 2: Rare -->
+<div class="clay-card p-3 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-1">
+<img class="w-full h-full object-cover" data-alt="A beautiful azure blue butterfly with glowing translucent wings, perched on a soft white clay pedestal. The scene is illuminated with a soft blue inner glow, creating a magical yet scientific atmosphere. The style is adventurous and tactile, part of a high-end nature exploration mobile application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjc69JJj0ycO-kv4qEOILnemMWDYFSm6eNT2Xx9fpwh3CyRzOaoOg5qApQU5yI5bfSdyiZPonfx6G0yLqzRS2NyXKI5Zxx9UwAzZnAoo3obRyaOaOjAzffJc9dceMGBXLIDw2r2zP6BgD7JLjNYCsX00hUw37KsUfYYyOQU_FwJPtoq6ZScokwKDQTZg0eVknr8IDflO4GvQRV6oBuVqQ-oPk5YePvzVg21q92XtY-TdY_tfo9JlJkBzQBTFzg5Dn8f0UmuJRmp34"/>
+<div class="absolute top-2 right-2 bg-sky-500 text-white font-label-sm text-[10px] px-2 py-0.5 rounded-full uppercase shadow-[0_0_8px_rgba(14,165,233,0.5)]">Rare</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight truncate">Azure Wing</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4.8</span>
+</div>
+</div>
+</div>
+<!-- Specimen Card 3: Epic -->
+<div class="clay-card p-3 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-1">
+<img class="w-full h-full object-cover" data-alt="A rare violet-tinted crystal cluster emitting a soft pulsing light, captured in a clean studio setting. The crystal has sharp geometric facets and is presented as a collectible digital asset. The lighting is sophisticated, with deep violet accents contrasting against a light-mode high-key background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMLYhJs9-rexAFwxW1nERwqetXJPQydxNtAKsbP03SBqyPijDgEZqeHdAFpTrtugFdKpRg9aNIKsiHskepAL_--rC2Eil2ylM3A8Vm74dOPn26rqXGZLPiCUXJYWezHKCH-EiGmgxwK4OolSEpaTljc5_5E3A1iv4r5NkHwfnobF2krgwvG7jY7my9CA_cCbr7o7mDDhyEuMzLoqLBNBZ58XISFDsTuABAs0wo3yLXfFDTKJ_qTJxZGN8Ls4va3BFqRA6S13Ef3Gg"/>
+<div class="absolute top-2 right-2 bg-violet-600 text-white font-label-sm text-[10px] px-2 py-0.5 rounded-full uppercase shadow-[0_0_12px_rgba(124,58,237,0.6)] animate-pulse">Epic</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight truncate">Void Shard</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">5.0</span>
+</div>
+</div>
+</div>
+<!-- Specimen Card 4: Common -->
+<div class="clay-card p-3 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-1">
+<img class="w-full h-full object-cover" data-alt="A detailed digital illustration of a common garden beetle with a metallic iridescent shell. The beetle is centered on a minimalist white surface with soft organic shadows. The overall aesthetic is a blend of scientific precision and playful gaming collection UI, featuring earthy green and bright white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGR03XBlTsvoVH2bogOaT9VYmI_61IHzOTyT_yUWHnwOYsPCJ51LNeOZmlOuQz0QiRHU0rToeuzvJh2tetbjLMYqVRDgueO1M-lqsjCgmI7mKPL_2qf4fSzQ1OTa3_QcZ4iKt4WNvtBrFtQILrnWKQJWlI1KtpXucoVPQRm2c_a9kd6ZSLUesrrFsEh6C7rAXzbWKPBab9BPsUCfitME3bhbpAzvs73Kr_QMF3OiPhqcUlJbw3h03fc6h6xytgAmOkkRX8AEYhIJk"/>
+<div class="absolute top-2 right-2 bg-slate-500 text-white font-label-sm text-[10px] px-2 py-0.5 rounded-full uppercase">Common</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight truncate">Moss Beetle</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3.9</span>
+</div>
+</div>
+</div>
+<!-- Specimen Card 5: Rare -->
+<div class="clay-card p-3 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-1">
+<img class="w-full h-full object-cover" data-alt="A rare glowing mushroom with a bioluminescent orange cap, standing on a soft-textured white base. The photography style is high-end macro, capturing fine textures and a gentle atmospheric glow. The color palette emphasizes secondary greens and warm orange highlights in a bright environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMltcPonxpIch0FsGUwuK8lcDZUnkRpflJcCLO-bYhZ12-XnI8H4EX0wkyt35Dtb2xVtLQoWHhR5lcjU8zjDvuwbSryBSfIN-vbbpBdrOS7pohGgGoOoYG8ztCOjye1_BrxeUn8TKKcWoz6l4y4Q7pTN5aa3R97Bi2z1TOC8wUexngObwklYD7euo0Cy7P2OJmJe4wJejz0pVz6141cmRZ75WUVPs8WgAUKbuPVvnLOYdPkdI5QkyhRpQgXNidVfS7-e7R2X9gx5U"/>
+<div class="absolute top-2 right-2 bg-sky-500 text-white font-label-sm text-[10px] px-2 py-0.5 rounded-full uppercase shadow-[0_0_8px_rgba(14,165,233,0.5)]">Rare</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight truncate">Ember Cap</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4.6</span>
+</div>
+</div>
+</div>
+<!-- Specimen Card 6: Common -->
+<div class="clay-card p-3 flex flex-col gap-2">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-1">
+<img class="w-full h-full object-cover" data-alt="A simple but elegant gray river stone with a single white quartz vein, presented as a tactile specimen in a digital gallery. The stone has a smooth matte finish and sits on a bright, minimalist surface. The lighting creates soft, inflated 3D shadows consistent with a claymorphic design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdlDXgGYtV2NOUwSz6ameONuy_oyCxp0pP_sggfpc7wCjRNUSNObTT6ubV9I8KqrgbgPE1V_h_A3OruWo4wPG1dxpxDQm4tVceIdl2n4NTk6IsoMN74Lgf9iTApa66NdvHtAtb2PO0UUFrlMV0le_mZZy-DGmkKEbjOLqijiGgnhEBZCrIlzvvqMPPJX9bG_FnpCZKJCeJdHrYj6aXb8EXfJ6Z126bl3bGicn4FDNmeOsNIfmSCDShquRsDK9wYtHowNMo2quBjps"/>
+<div class="absolute top-2 right-2 bg-slate-500 text-white font-label-sm text-[10px] px-2 py-0.5 rounded-full uppercase">Common</div>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface leading-tight truncate">River Slate</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3.5</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Floating Glassmorphic) -->
+<nav class="fixed bottom-6 left-4 right-4 z-50 flex justify-around items-center px-4 bg-white/60 dark:bg-black/60 backdrop-blur-2xl rounded-full h-20 border border-white/40 shadow-xl lg:hidden">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px] mt-1">Home</span>
+</a>
+<!-- Dex (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full w-14 h-14 shadow-inner active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined active-glow" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-sm text-[10px] font-bold">Dex</span>
+</a>
+<!-- Scan (Primary Action) -->
+<button class="relative -top-8 bg-primary w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">photo_camera</span>
+</button>
+<!-- Rank -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-[10px] mt-1">Rank</span>
+</a>
+<!-- Map -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:scale-110 transition-transform active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-sm text-[10px] mt-1">Map</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple scroll effect for the header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.remove('border-white/40');
+                header.classList.add('border-white/10');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('border-white/40');
+                header.classList.remove('border-white/10');
+            }
+        });
+
+        // Add active states to filters
+        const filterButtons = document.querySelectorAll('.flex-shrink-0');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    b.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
+                });
+                btn.classList.remove('bg-surface-container-highest', 'text-on-surface-variant');
+                btn.classList.add('bg-primary-container', 'text-on-primary-container');
+            });
+        });
+    </script>
+</body></html>
