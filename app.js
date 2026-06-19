@@ -1137,32 +1137,136 @@ function initializeLeafletMap() {
         window.capdexMap.zoomOut();
     });
 
-    // ── Recenter: Use browser geolocation if available ──
-    document.getElementById("btn-map-recenter").addEventListener("click", () => {
-        if (navigator.geolocation) {
-            showNotification("Locating your position…");
-            navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    const lat = pos.coords.latitude;
-                    const lng = pos.coords.longitude;
-                    window.capdexMap.setView([lat, lng], 14, { animate: true, duration: 1.2 });
-                    // Update user location marker
-                    if (window.userLocationMarker) {
-                        window.userLocationMarker.setLatLng([lat, lng]);
-                    }
-                    showNotification(`Located: ${lat.toFixed(4)}, ${lng.toFixed(4)}`);
-                },
-                () => {
-                    // Fallback to default location
-                    window.capdexMap.setView([20, 0], 3, { animate: true });
-                    showNotification("Location access denied. Showing world view.");
-                },
-                { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
-            );
-        } else {
-            window.capdexMap.setView([20, 0], 3, { animate: true });
-            showNotification("Geolocation not supported by your browser.");
+    // ── Locate Me: Real-time GPS tracking with live marker + accuracy circle ──
+    window.locateMeWatchId = null;
+    window.locateMeMarker = null;
+    window.locateMeAccuracyCircle = null;
+
+    document.getElementById("btn-map-locate-me").addEventListener("click", () => {
+        const locBtn = document.getElementById("btn-map-locate-me");
+
+        // If already tracking, stop it
+        if (window.locateMeWatchId !== null) {
+            navigator.geolocation.clearWatch(window.locateMeWatchId);
+            window.locateMeWatchId = null;
+
+            // Remove marker and circle
+            if (window.locateMeMarker && window.capdexMap.hasLayer(window.locateMeMarker)) {
+                window.capdexMap.removeLayer(window.locateMeMarker);
+            }
+            if (window.locateMeAccuracyCircle && window.capdexMap.hasLayer(window.locateMeAccuracyCircle)) {
+                window.capdexMap.removeLayer(window.locateMeAccuracyCircle);
+            }
+            window.locateMeMarker = null;
+            window.locateMeAccuracyCircle = null;
+
+            // Reset button style
+            locBtn.classList.remove("bg-red-500", "border-red-400/30");
+            locBtn.classList.add("bg-secondary", "border-secondary/30");
+            locBtn.querySelector("span:last-of-type").nextSibling.textContent = " Locate Me";
+            showNotification("Location tracking stopped.");
+            return;
         }
+
+        if (!navigator.geolocation) {
+            showNotification("Geolocation is not supported by your browser.");
+            return;
+        }
+
+        showNotification("Acquiring GPS signal…");
+
+        // Switch button to tracking state
+        locBtn.classList.remove("bg-secondary", "border-secondary/30");
+        locBtn.classList.add("bg-red-500", "border-red-400/30");
+        locBtn.querySelector("span:last-of-type").nextSibling.textContent = " Tracking…";
+
+        window.locateMeWatchId = navigator.geolocation.watchPosition(
+            (pos) => {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const accuracy = pos.coords.accuracy; // in meters
+
+                // Save to state
+                state.userLat = lat;
+                state.userLng = lng;
+
+                // Update or create accuracy circle
+                if (window.locateMeAccuracyCircle) {
+                    window.locateMeAccuracyCircle.setLatLng([lat, lng]);
+                    window.locateMeAccuracyCircle.setRadius(accuracy);
+                } else {
+                    window.locateMeAccuracyCircle = L.circle([lat, lng], {
+                        radius: accuracy,
+                        color: '#0e6c4a',
+                        fillColor: '#0e6c4a',
+                        fillOpacity: 0.08,
+                        weight: 1.5,
+                        dashArray: '4, 4'
+                    }).addTo(window.capdexMap);
+                }
+
+                // Update or create location marker (pulsing blue dot)
+                if (window.locateMeMarker) {
+                    window.locateMeMarker.setLatLng([lat, lng]);
+                } else {
+                    const liveIcon = L.divIcon({
+                        className: 'locate-me-pin',
+                        html: `
+                            <div class="relative flex items-center justify-center w-12 h-12">
+                                <div class="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping"></div>
+                                <div class="absolute inset-1 bg-emerald-500/10 rounded-full animate-pulse"></div>
+                                <div class="relative w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-xl border-[3px] border-emerald-600">
+                                    <div class="w-3 h-3 bg-emerald-600 rounded-full shadow-inner"></div>
+                                </div>
+                            </div>
+                        `,
+                        iconSize: [48, 48],
+                        iconAnchor: [24, 24]
+                    });
+                    window.locateMeMarker = L.marker([lat, lng], { icon: liveIcon, zIndexOffset: 2000 }).addTo(window.capdexMap);
+                    window.locateMeMarker.bindTooltip(
+                        `<strong>You are here</strong><br><span style="font-size:9px;opacity:0.8;">±${Math.round(accuracy)}m accuracy</span>`,
+                        { direction: 'top', offset: [0, -24], className: 'leaflet-tooltip-custom', permanent: false }
+                    );
+
+                    // Fly to location on first fix
+                    window.capdexMap.flyTo([lat, lng], 16, { animate: true, duration: 1.5 });
+                    showNotification(`Located! Accuracy: ±${Math.round(accuracy)}m`);
+                }
+
+                // Update tooltip with latest accuracy
+                if (window.locateMeMarker.getTooltip()) {
+                    window.locateMeMarker.setTooltipContent(
+                        `<strong>You are here</strong><br><span style="font-size:9px;opacity:0.8;">±${Math.round(accuracy)}m accuracy</span>`
+                    );
+                }
+
+                // Update coordinates display
+                const coordsDisplay = document.getElementById("map-coords-display");
+                if (coordsDisplay) {
+                    coordsDisplay.textContent = `📍 Lat: ${lat.toFixed(5)}  Lng: ${lng.toFixed(5)}  ±${Math.round(accuracy)}m`;
+                }
+            },
+            (err) => {
+                // Stop tracking on error
+                if (window.locateMeWatchId !== null) {
+                    navigator.geolocation.clearWatch(window.locateMeWatchId);
+                    window.locateMeWatchId = null;
+                }
+                locBtn.classList.remove("bg-red-500", "border-red-400/30");
+                locBtn.classList.add("bg-secondary", "border-secondary/30");
+                locBtn.querySelector("span:last-of-type").nextSibling.textContent = " Locate Me";
+
+                if (err.code === 1) {
+                    showNotification("Location permission denied. Please allow GPS access.");
+                } else if (err.code === 2) {
+                    showNotification("GPS signal unavailable. Try again outdoors.");
+                } else {
+                    showNotification("Location request timed out. Try again.");
+                }
+            },
+            { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+        );
     });
 
     // ── Close specimen popup on map click ──

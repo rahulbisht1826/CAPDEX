@@ -348,6 +348,12 @@ body {
     border: none !important;
 }
 
+/* Locate-me live pin */
+.locate-me-pin {
+    background: transparent !important;
+    border: none !important;
+}
+
 /* Leaflet scale control */
 .leaflet-control-scale-line {
     background: rgba(255, 255, 255, 0.8) !important;
